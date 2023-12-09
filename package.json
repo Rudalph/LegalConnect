@@ -9,19 +9,31 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@cometchat-pro/chat": "^3.0.13",
+    "@cometchat/chat-sdk-javascript": "^4.0.2",
+    "@emailjs/browser": "^3.11.0",
+    "@nextui-org/react": "^2.2.9",
+    "dotenv": "^16.3.1",
+    "emailjs-com": "^3.2.0",
+    "firebase": "^10.4.0",
+    "framer-motion": "^10.16.15",
+    "next": "^13.5.4",
+    "qrcode.react": "^3.1.0",
     "react": "latest",
     "react-dom": "latest",
-    "next": "latest"
+    "react-icons": "^4.11.0",
+    "smtpjs": "^0.0.1"
   },
   "devDependencies": {
-    "typescript": "latest",
-    "@types/react": "latest",
     "@types/node": "latest",
+    "@types/react": "latest",
     "@types/react-dom": "latest",
     "autoprefixer": "latest",
+    "eslint": "latest",
+    "eslint-config-next": "latest",
+    "file-loader": "^6.2.0",
     "postcss": "latest",
     "tailwindcss": "latest",
-    "eslint": "latest",
-    "eslint-config-next": "latest"
+    "typescript": "latest"
   }
 }

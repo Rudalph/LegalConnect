@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Mooli&family=Pacifico&family=Tilt+Prism&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&family=Yrsa:ital,wght@1,300&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Sanchez:ital@1&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -17,11 +20,17 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+ 
+}
+
+.logo-text {
+    font-family: 'Tilt Prism', cursive;
+}
+
+.heading {
+  font-family: 'Roboto Slab', serif;
+}
+
+.form {
+  font-family: 'Sanchez', serif;
 }
