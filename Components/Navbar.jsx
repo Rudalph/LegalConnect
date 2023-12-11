@@ -73,7 +73,7 @@ const Navbar = () => {
         contact:data.contact,
         language:data.language,
         availability:data.availability,
-        address:data.address,
+        userID:data.userID,
         fees:data.fees,
         education:data.education,
         email:data.email,
@@ -89,6 +89,7 @@ const Navbar = () => {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userName, setUserName] = useState('');
+  const [userID, setUserID] = useState('');
 
   useEffect(() => {
     const auth = getAuth();
@@ -96,9 +97,11 @@ const Navbar = () => {
       if (user) {
         setIsLoggedIn(true); // User is logged in
         setUserName(user.email);
+        setUserID(user.uid)
       } else {
         setIsLoggedIn(false); // User is not logged in
         setUserName('');
+        setUserID('')
       }
     });
 
@@ -124,7 +127,7 @@ const Navbar = () => {
   };
 
   const displayDetails = () =>{
-    alert(`You are Loggedin with: ${userName}`);
+    alert(`You are Loggedin with: ${userName} and User id as ${userID}`);
   }
  
 
@@ -176,7 +179,7 @@ const Navbar = () => {
             <div className='flex justify-evenly items-center p-10'>
                 <input type="text" placeholder='Language' className='bg-[#D8D9DA] border-collapse w-80' onChange={(event)=>setData((prev) => ({...prev, language: event.target.value}))} value={data.language}/>
                 <input type="text" placeholder='Availability' className='bg-[#D8D9DA] border-collapse w-80' onChange={(event)=>setData((prev) => ({...prev, availability: event.target.value}))} value={data.availability}/>
-                <input type="text" placeholder='Office Adress' className='bg-[#D8D9DA] border-collapse w-80' onChange={(event)=>setData((prev) => ({...prev, address: event.target.value}))} value={data.address}/>
+                <input type="text" placeholder='User ID' className='bg-[#D8D9DA] border-collapse w-80' onChange={(event)=>setData((prev) => ({...prev, userID: event.target.value}))} value={data.userID}/>
                 <input type="text" placeholder='Fee Structure' className='bg-[#D8D9DA] border-collapse w-80' onChange={(event)=>setData((prev) => ({...prev, fees: event.target.value}))} value={data.fees}/>
             </div>
             <div className='flex justify-evenly items-center p-10'>

@@ -6,7 +6,6 @@ import emailjs from 'emailjs-com';
 import { FcGoogle } from "react-icons/fc";
 import { FaSignInAlt } from "react-icons/fa";
 
-import { CometChat } from '@cometchat-pro/chat';
 
 const Page = () => {
   const auth = getAuth();
@@ -49,19 +48,6 @@ const Page = () => {
         });
   }
 
-const appID = '249424ce11d5fbfa';
-const region = 'in';
-
-const appSetting = new CometChat.AppSettingsBuilder().subscribePresenceForAllUsers().setRegion(region).build();
-
-  CometChat.init(appID,appSetting).then(
-    ()=> {
-        console.log("Initilization Completed Successfully");
-    },
-    error => {
-      console.log("Initilization failed with error",error);
-    }
-  )
 
   const signUp = () => {
     if (signupValues.firstName === '' || signupValues.lastName === '' || signupValues.email === '' || signupValues.password === '' || signupValues.otp==='') {
@@ -76,26 +62,13 @@ const appSetting = new CometChat.AppSettingsBuilder().subscribePresenceForAllUse
             const user = userCredential.user;
             console.log(user);
 
-
-            const authKey = 'cbeec1c3951b04b3dd74aa022b343e1faf9612ac';
-            const uid = user.email;
-            const name = user.email;
-            var cuser = new CometChat.User(uid);
-            cuser.setName(name);
-            CometChat.createUser(cuser, authKey).then(
-              cuser => {
-                  console.log("CUser created",cuser);
-              },
-              error => {
-                console.log("Error in creting cuser",error);
-              }
-            )
-
             alert("Account Created");
           })
           .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
+            console.log(errorCode);
+            console.log(errorMessage);
           });
       }
       else

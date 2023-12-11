@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react'
 import  Link  from 'next/link';
 import { FcGoogle } from "react-icons/fc";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { CometChat } from '@cometchat-pro/chat';
+
 
  
 const page = () => {
@@ -20,32 +20,19 @@ const page = () => {
    }
    else
    {
-          const auth = getAuth();
-      signInWithEmailAndPassword(auth, loginValues.email, loginValues.password)
-        .then((userCredential) => {
-          // Signed in 
-          const user = userCredential.user;
-
-          
-          const uid = user.email;
-          const authKey = 'cbeec1c3951b04b3dd74aa022b343e1faf9612ac';
-           CometChat.login(uid, authKey).then(
-            cuser=>{
-              console.log("Cuser logged in",{ cuser });
-            },
-            error=>{
-              console.log("cuser login failed",{ error })
-            }
-           )
-
-          alert("Logged in");
-          // ...
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          alert("Error");
-        });
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, loginValues.email, loginValues.password)
+      .then(async (userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log(user.uid);
+        alert("Logged in");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert("Errors", errorMessage, errorCode);
+      });
    }
   }
 

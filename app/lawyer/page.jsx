@@ -1,5 +1,5 @@
 "use client";
-import React,{useState, useEffect} from 'react'
+import React,{useState, useEffect, useId} from 'react'
 import { doc, getDoc } from "firebase/firestore";
 import { db } from '@/Components/firebase';
 import { PiPhoneCallFill } from 'react-icons/pi';
@@ -9,7 +9,6 @@ import { BsLinkedin } from 'react-icons/bs';
 import { TbWorldWww } from 'react-icons/tb';
 import QRCode from "qrcode.react";
 
-import { CometChat } from '@cometchat-pro/chat';
 
 
 
@@ -26,7 +25,8 @@ const page = ({ searchParams }) => {
         if (docSnap.exists()) {
           console.log("Document data:", docSnap.data());
           setLawyer([docSnap.data()]);
-          setUid(docSnap.data().email);
+          setUid(String((docSnap.data().userID)));
+          
         } else {
           // docSnap.data() will be undefined in this case
           alert("No such document!");
@@ -43,27 +43,7 @@ const page = ({ searchParams }) => {
 
 
   }, [searchParams.category, searchParams.docid]);
-
-
-  const [messages, setMessages] = useState([]);
-  const [text, setText] = useState('');
-
-
-  const sendMessage = () => {
-    if (text.trim() === '') return;
-
-    const textMessage = new CometChat.TextMessage(String(uid), text, CometChat.MESSAGE_TYPE.TEXT, CometChat.RECEIVER_TYPE.USER);
-    CometChat.sendMessage(textMessage).then(
-      (message) => {
-        console.log('Message sent successfully:', message);
-        setMessages([...messages, message]);
-        setText('');
-      },
-      (error) => {
-        console.log('Message sending failed with error:', error);
-      }
-    );
-  };
+ 
 
   return (
     <div>
@@ -116,8 +96,7 @@ const page = ({ searchParams }) => {
                         </div>
                       ))}
                     </div>
-                    <input type="text" value={text} onChange={(e) => setText(e.target.value)} />
-                    <button onClick={sendMessage}>Send</button>
+                    
                   </div>
                 </div>
             </div>
