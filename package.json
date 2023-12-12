@@ -13,6 +13,12 @@
     "@cometchat/chat-sdk-javascript": "^4.0.2",
     "@emailjs/browser": "^3.11.0",
     "@emotion/react": "^11",
+<<<<<<< Updated upstream
+=======
+    "@fortawesome/fontawesome-svg-core": "^6.5.1",
+    "@fortawesome/free-solid-svg-icons": "^6.5.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+>>>>>>> Stashed changes
     "@nextui-org/react": "^2.2.9",
     "@twemoji/api": "^14.1.0",
     "dateformat": "^4.0.0",
@@ -21,13 +27,21 @@
     "firebase": "^10.4.0",
     "framer-motion": "^10.16.15",
     "html-react-parser": "^1.4.5",
+<<<<<<< Updated upstream
+=======
+    "lodash": "^4.17.20",
+>>>>>>> Stashed changes
     "next": "^13.5.4",
     "pubnub": "^7.4.5",
     "pubnub-react": "^3.0.2",
     "qrcode.react": "^3.1.0",
     "react": "latest",
     "react-dom": "latest",
+<<<<<<< Updated upstream
     "react-icons": "^4.11.0",
+=======
+    "react-icons": "^4.12.0",
+>>>>>>> Stashed changes
     "smtpjs": "^0.0.1"
   },
   "devDependencies": {
@@ -35,6 +49,7 @@
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "autoprefixer": "latest",
+    "daisyui": "^4.4.19",
     "eslint": "latest",
     "eslint-config-next": "latest",
     "file-loader": "^6.2.0",
