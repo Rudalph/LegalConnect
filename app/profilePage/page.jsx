@@ -6,7 +6,7 @@ import { AiOutlineMail } from 'react-icons/ai';
 import { BsLinkedin } from 'react-icons/bs';
 import { TbWorldWww } from 'react-icons/tb';
 import { collection, getDocs } from 'firebase/firestore';
-import { db } from '@/Components/firebase';
+import { db, auth } from '@/Components/firebase';
 import Modal2 from "./Modal2";
 import QRCode from "qrcode.react";
 import  Link  from 'next/link';
@@ -17,6 +17,7 @@ import  Link  from 'next/link';
 export default function Page({ searchParams }) {
   const [lawyersData, setLawyersData] = useState([]);
   const [showModal2, setShowModal2] = useState(false);
+ 
 
 
   useEffect(() => {
