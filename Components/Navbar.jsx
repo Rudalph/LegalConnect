@@ -97,7 +97,7 @@ const Navbar = () => {
       if (user) {
         setIsLoggedIn(true); // User is logged in
         setUserName(user.email);
-        setUserID(user.uid)
+        setUserID(user.uid.toLowerCase())
       } else {
         setIsLoggedIn(false); // User is not logged in
         setUserName('');

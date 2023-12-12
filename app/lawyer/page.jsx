@@ -12,9 +12,10 @@ import QRCode from "qrcode.react";
 
 
 
+
 const page = ({ searchParams }) => {
   const [lawyer, setLawyer] = useState([]);
-  const [uid, setUid] = useState('');
+
   
   useEffect(() => {
     
@@ -25,7 +26,7 @@ const page = ({ searchParams }) => {
         if (docSnap.exists()) {
           console.log("Document data:", docSnap.data());
           setLawyer([docSnap.data()]);
-          setUid(String((docSnap.data().userID)));
+          console.log("HEY",docSnap.data().userID);
           
         } else {
           // docSnap.data() will be undefined in this case
@@ -43,6 +44,7 @@ const page = ({ searchParams }) => {
 
 
   }, [searchParams.category, searchParams.docid]);
+
  
 
   return (
@@ -89,14 +91,7 @@ const page = ({ searchParams }) => {
              
                 <div className='p-4 rounded form text-[#272829] outline outline-1 outline-offset-1 shadow-inner my-3 flex justify-around gap-5 items-start h-96 w-96'>
                 <div>
-                    <div>
-                      {messages.map((message) => (
-                        <div key={message.id}>
-                          {message.text}
-                        </div>
-                      ))}
-                    </div>
-                    
+          
                   </div>
                 </div>
             </div>

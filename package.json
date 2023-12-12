@@ -22,7 +22,11 @@
     "react": "latest",
     "react-dom": "latest",
     "react-icons": "^4.11.0",
-    "smtpjs": "^0.0.1"
+    "smtpjs": "^0.0.1",
+    "@emotion/react": "^11",
+		"dateformat": "^4.0.0",
+		"html-react-parser": "^1.4.5",
+		"@twemoji/api": "^14.1.0"
   },
   "devDependencies": {
     "@types/node": "latest",

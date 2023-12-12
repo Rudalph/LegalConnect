@@ -48,7 +48,6 @@ const Page = () => {
         });
   }
 
-
   const signUp = () => {
     if (signupValues.firstName === '' || signupValues.lastName === '' || signupValues.email === '' || signupValues.password === '' || signupValues.otp==='') {
       alert('Kindly fill all the details to signup');

@@ -1,5 +1,5 @@
 "use client"
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import  Link  from 'next/link';
 import { FcGoogle } from "react-icons/fc";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
@@ -27,6 +27,7 @@ const page = () => {
         const user = userCredential.user;
         console.log(user.uid);
         alert("Logged in");
+    
       })
       .catch((error) => {
         const errorCode = error.code;
