@@ -1,6 +1,7 @@
 import React from "react";
 import Logo from "@/public/images/Ministry_of_Law_and_Justice.png";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Nav() {
   return (
@@ -14,16 +15,19 @@ export default function Nav() {
         <div className="flex-none ">
           <ul className="menu menu-horizontal px-1  flex items-center justify-center space-x-4">
             <li className="pr-7">
+              <Link href="/">Home</Link>
+            </li>
+            <li className="pr-7">
               <a>Find</a>
             </li>
             <li className="pr-7">
               <a>Profile</a>
             </li>
             <li className="btn btn-ghost hover:bg-primary hover:text-white border border-primary">
-              <a>Register</a>
+              <Link href="/Signup">Register</Link>
             </li>
             <li className="btn btn-ghost hover:bg-primary hover:text-white border border-primary">
-              <a>Login</a>
+              <Link href="/Login">Login</Link>
             </li>
           </ul>
         </div>

@@ -25,8 +25,9 @@ export default function Blockquote() {
             <Image
               src={Hero}
               alt="Hero"
-              className="max-sm rounded-lg bg-base-100 shadow-2xl w-full md:w-full"
+              className="max-sm rounded-lg bg-base-100  w-full md:w-full"
             />
+            <hr className="my-4 border-t-2 border-base-200" />
           </div>
         </div>
       </div>
