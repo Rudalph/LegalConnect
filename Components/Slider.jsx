@@ -1,13 +1,13 @@
 import React from "react";
 import Image from "next/image";
-import Slider1 from '@/public/images/icons/Ministry_of_Law_and_Justice.png'
-import Slider2 from '@/public/images/icons/g20.png'
-import Slider3 from '@/public/images/icons/amrit_mohatsav.png'
-import Slider4 from '@/public/images/icons/data-gov.png'
-import Slider5 from '@/public/images/icons/india-gov.png'
-import Slider6 from '@/public/images/icons/Make_In_India.png'
-import Slider7 from '@/public/images/icons/digital_india.png'
-import Slider8 from '@/public/images/icons/mygov.png'
+import Slider1 from '@/public/images/Ministry_of_Law_and_Justice.png'
+import Slider2 from '@/public/images/g20.png'
+import Slider3 from '@/public/images/amrit_mohatsav.png'
+import Slider4 from '@/public/images/data-gov.png'
+import Slider5 from '@/public/images/india-gov.png'
+import Slider6 from '@/public/images/Make_In_India.png'
+import Slider7 from '@/public/images/digital_india.png'
+import Slider8 from '@/public/images/mygov.png'
 
 
 
@@ -16,7 +16,7 @@ import Slider8 from '@/public/images/icons/mygov.png'
 export default function Slider() {
   return (
     <div>
-      <div className="carousel rounded-box max-h-28 max-w-full p-2 ">
+      <div className="carousel rounded-box min-h-26 max-w-full p-2 ">
         
         <div className="carousel-item">
             <Image src={Slider1} alt="Slider1" className="max-w-sm mx-10"/>
