@@ -1,3 +1,4 @@
+'use client'
 import Hero from "@/Components/Hero";
 import Blockquote from "@/Components/Blockquote";
 import Slider from "@/Components/Slider";
