@@ -153,7 +153,7 @@ const Page = () => {
                 />
                 <div className="mt-6 form-control">
                 <Link href={'/Signup'}>
-                  <button className=" border-accent btn w-full hover:bg-accent hover:text-white" onClick={sendOTP}>
+                  <button className=" bg-base-100 border-accent btn w-full hover:bg-accent hover:text-white" onClick={sendOTP}>
                     Send OTP
                   </button>
                 </Link>
@@ -162,8 +162,8 @@ const Page = () => {
               </div>
 
               <div className="mt-6 form-control">
-                <Link href={'/Signup'}>
-                  <button className=" border-primary btn w-full hover:bg-primary hover:text-white" onClick={signUp}>
+                <Link href={'/Login'}>
+                  <button className=" bg-base-100 border-primary btn w-full hover:bg-primary hover:text-white" onClick={signUp}>
                     Register
                   </button>
                 </Link>

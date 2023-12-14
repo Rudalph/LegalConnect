@@ -88,7 +88,7 @@ const page = () => {
 
               <div className="mt-6 form-control">
                 <Link href={'/'}>
-                  <button className=" border-primary btn w-full hover:bg-primary hover:text-white" onClick={handleLogin}>
+                  <button className="bg-base-100 border-primary btn w-full hover:bg-primary hover:text-white" onClick={handleLogin}>
                     Login
                   </button>
                 </Link>
