@@ -42,7 +42,9 @@ export default function Page({ searchParams }) {
 
   return (
     <div className='py-10 px-48'>
-      {lawyersData.map((lawyer) => {
+      {lawyersData
+      .filter((lawyer) => lawyer.verificationStatus === 'verified')
+      .map((lawyer) => {
         return(
       
        <div onClick={()=>setShowModal2(false)} key={lawyer.id} className='p-4 rounded form text-[#272829] outline outline-1 outline-offset-1 shadow-inner my-3 flex justify-around gap-5 items-start'>

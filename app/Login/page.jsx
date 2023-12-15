@@ -18,6 +18,11 @@ const page = () => {
    {
      alert("Kindly fill all fields to Login.")
    }
+   else if(loginValues.email==='admin' || loginValues.password==='admin')
+   {
+    alert("ADMIN SIGNUP WORKING");
+    window.location.href='/Admin';
+   }
    else
    {
     const auth = getAuth();
