@@ -1,14 +1,20 @@
 "use client"
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithRedirect, GoogleAuthProvider } from "firebase/auth";
 import emailjs from 'emailjs-com';
 import { FcGoogle } from "react-icons/fc";
 import { FaSignInAlt } from "react-icons/fa";
 import app from "@/Components/firebase";
+import { auth } from '@/Components/firebase';
+
 
 const Page = () => {
   const auth = getAuth(app);
+
+  const onClickGSI = () => {
+    signInWithRedirect(auth, new GoogleAuthProvider());
+  };
 
   const [signupValues, setSignupValues] = useState({
     firstName: '',
@@ -36,7 +42,7 @@ const Page = () => {
         'service_3n4u5xv', 
         'template_lxheujc', 
         { recipientEmail, subject, message },
-        'KNZnsBBQD1OHUCvaf' 
+        '8UEl9xzVrd20IL3WZ' 
       )
         .then((response) => {
           console.log('Email sent:', response);
@@ -166,6 +172,7 @@ const Page = () => {
                   <button className=" bg-base-100 border-primary btn w-full hover:bg-primary hover:text-white" onClick={signUp}>
                     Register
                   </button>
+                  <button onClick={onClickGSI}>Google</button>
                 </Link>
               </div>
                
