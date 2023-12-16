@@ -18,6 +18,11 @@ const page = () => {
    {
      alert("Kindly fill all fields to Login.")
    }
+   else if(loginValues.email==='admin' || loginValues.password==='admin')
+   {
+    alert("ADMIN SIGNUP WORKING");
+    window.location.href='/Admin';
+   }
    else
    {
     const auth = getAuth();
@@ -37,34 +42,74 @@ const page = () => {
    }
   }
 
-  return (
-    <div>
-       <form >
-      {/* Email */}
-      <div className="form-control">
-        <label className="label">Email</label>
-        <input
-          onChange={(e)=>setLoginValues((prev)=>({...prev, email:e.target.value}))}
-          required
-          type="email"
-          className="input input-bordered"
-        />
-      </div>
-      {/* Password */}
-      <div className="form-control">
-        <label className="label">Password</label>
-        <input
-          required
-          onChange={(e)=>setLoginValues((prev)=>({...prev, password:e.target.value}))}
-          type="password"
-          className="input input-bordered"
-        />
-      </div>
+  return ( 
+    
+    <div className="flex justify-center items-center mt-20 mb-20">
+      <div className="grid grid-cols-2 max-w-3xl p-2 shadow-2xl rounded-2xl">
+       
+        <div>
+          <img
+            src="https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-135.jpg?w=740&t=st=1702481693~exp=1702482293~hmac=6b011f770a2fb254d7eb634be18bd5ae10b00d0ef92be531228290d7441c0153"
+            alt="Image"
+            className="object-cover rounded-lg w-full h-full"
+          />
+        </div>
+        
+        <div>
+          <div className="card bg-base-100 p-6">
+            <h2 className="text-2xl font-bold">Login Here</h2>
+            <hr className="my-4 border-t-2 border-base-200" />
+            <form>
+              {/* Email */}
+              <div className="form-control">
+                <label className="label">Email</label>
+                <input
+                  onChange={(e) =>
+                    setLoginValues((prev) => ({
+                      ...prev,
+                      email: e.target.value,
+                    }))
+                  }
+                  required
+                  type="email"
+                  className="input input-bordered"
+                />
+              </div>
+              {/* Password */}
+              <div className="form-control">
+                <label className="label">Password</label>
+                <input
+                  required
+                  onChange={(e) =>
+                    setLoginValues((prev) => ({
+                      ...prev,
+                      password: e.target.value,
+                    }))
+                  }
+                  type="password"
+                  className="input input-bordered"
+                />
+              </div>
 
-      <div className="mt-5 form-control">
-      <Link href={"/Login"}><button className="btn-primary btn" onClick={handleLogin}>Login</button></Link>
+              <div className="mt-6 form-control">
+                <Link href={'/'}>
+                  <button className="bg-base-100 border-primary btn w-full hover:bg-primary hover:text-white" onClick={handleLogin}>
+                    Login
+                  </button>
+                </Link>
+              </div>
+              <div className="mt-4 text-center">
+                <p className="text-base">
+                  Don't have an account?{' '}
+                  <Link href={'/Signup'} className="text-primary font-bold">
+                    Sign Up
+                  </Link>
+                </p>
+              </div> 
+            </form>
+          </div>
+        </div>
       </div>
-    </form>
     </div>
 
     // <div className='flex justify-center mt-14'>
