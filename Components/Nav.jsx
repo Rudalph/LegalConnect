@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React from "react";
 import Logo from "@/public/images/Ministry_of_Law_and_Justice.png";
 import Image from "next/image";
@@ -7,13 +7,12 @@ import { useState } from "react";
 import { useEffect } from "react";
 import app from "@/Components/firebase";
 import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
+import Dropdown from "@/Components/Dropdown"
 
 export default function Nav() {
-
-  
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userName, setUserName] = useState('');
-  const [userID, setUserID] = useState('');
+  const [userName, setUserName] = useState("");
+  const [userID, setUserID] = useState("");
   const [showAlert, setShowAlert] = useState(false);
 
   useEffect(() => {
@@ -22,11 +21,11 @@ export default function Nav() {
       if (user) {
         setIsLoggedIn(true); // User is logged in
         setUserName(user.email);
-        setUserID(user.uid)
+        setUserID(user.uid);
       } else {
         setIsLoggedIn(false); // User is not logged in
-        setUserName('');
-        setUserID('')
+        setUserName("");
+        setUserID("");
       }
     });
     return () => {
@@ -34,15 +33,13 @@ export default function Nav() {
     };
   }, []);
 
-
   const displayDetails = () => {
     setShowAlert(true);
   };
 
-
   return (
     <div>
-      <div className="navbar bg-base-100">
+      <div className="navbar ">
         <div className="flex-1">
           <a href="https://lawmin.gov.in/">
             <Image src={Logo} alt="Logo" width={175} height={200} />
@@ -56,19 +53,14 @@ export default function Nav() {
             <li className="pr-7">
               <Link href="/Lawer_Register">Lawyer Registration</Link>
             </li>
-            <li className="pr-7">
-              <a>Find</a>
-            </li>
-            <li className="pr-7">
-              <Link href="/profilePage">Profile</Link>
-            </li>
-            <li className="pr-7 btn btn-ghost hover:bg-primary hover:text-white border border-primary">
-            {isLoggedIn?(
-                    
-                    <button onClick={displayDetails}>User Details</button>
-                               
-                ):(<></>)}
+            <Dropdown/>
             
+            <li className="pr-7 btn btn-ghost hover:bg-primary hover:text-white border border-primary">
+              {isLoggedIn ? (
+                <button onClick={displayDetails}>User Details</button>
+              ) : (
+                <></>
+              )}
             </li>
 
             {/* <li className="btn btn-ghost hover:bg-primary hover:text-white border border-primary">
@@ -78,20 +70,19 @@ export default function Nav() {
               <Link href="/Login">Login</Link>
             </li>
           </ul>
-          
         </div>
       </div>
-
+            
       {showAlert && (
         <div
           role="alert"
           className="fixed top-5 left-1/2 transform -translate-x-1/2 alert bg-base-100 w-fit border-accent"
         >
-          
           <div>
             <h3 className="font-bold">Your User Details!</h3>
             <div className="text-xs ">
-              You are logged in as <p className="font-bold">{userName}</p> with User ID <p className="font-bold ">{userID}</p>
+              You are logged in as <p className="font-bold">{userName}</p> with
+              User ID <p className="font-bold ">{userID}</p>
             </div>
           </div>
           <button

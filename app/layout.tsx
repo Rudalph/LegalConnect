@@ -24,7 +24,7 @@ export default function RootLayout({
     <html lang="en" data-theme = "light">
       <body className={inter.className}>
         <Header/>
-        <Navbar/> 
+        <Nav/> 
        
         
         

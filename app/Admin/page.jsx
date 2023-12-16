@@ -17,7 +17,7 @@ export default function LawyersComponent() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const collectionNames = ['civil', 'criminal']; 
+        const collectionNames = ['Civil', 'criminal']; 
         const promises = collectionNames.map(async (collectionName) => {
           const querySnapshot = await getDocs(collection(db, collectionName));
           return querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));

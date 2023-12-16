@@ -1,98 +1,136 @@
 "use client";
-import React, { useEffect, useState } from 'react';
-import { PiPhoneCallFill } from 'react-icons/pi';
-import { GrInstagram } from 'react-icons/gr';
-import { AiOutlineMail } from 'react-icons/ai';
-import { BsLinkedin } from 'react-icons/bs';
-import { TbWorldWww } from 'react-icons/tb';
-import { collection, getDocs } from 'firebase/firestore';
-import { db, auth } from '@/Components/firebase';
-import Modal2 from "./Modal2";
-import QRCode from "qrcode.react";
-import  Link  from 'next/link';
+import React, { useEffect, useState } from "react";
+import { FaLinkedin } from "react-icons/fa6";
+import { IoMail } from "react-icons/io5";
 
+import { IoCall } from "react-icons/io5";
+import { collection, getDocs } from "firebase/firestore";
+import { db, auth } from "@/Components/firebase";
 
-
+import Link from "next/link";
 
 export default function Page({ searchParams }) {
   const [lawyersData, setLawyersData] = useState([]);
   const [showModal2, setShowModal2] = useState(false);
- 
-
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const querySnapshot = await getDocs(collection(db, searchParams.collectionName));
-        const data = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+        const querySnapshot = await getDocs(
+          collection(db, searchParams.collectionName)
+        );
+        const data = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
         setLawyersData(data);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
       }
     };
-   
+
     if (searchParams.collectionName) {
       fetchData();
     }
-
-
   }, [searchParams.collectionName]);
 
-
-
   return (
-    <div className='py-10 px-48'>
+    <div>
       {lawyersData
-      .filter((lawyer) => lawyer.verificationStatus === 'verified')
-      .map((lawyer) => {
-        return(
-      
-       <div onClick={()=>setShowModal2(false)} key={lawyer.id} className='p-4 rounded form text-[#272829] outline outline-1 outline-offset-1 shadow-inner my-3 flex justify-around gap-5 items-start'>
-          <div className='ml-10 mt-4'>
-             <img src={lawyer.imgUrl} alt="" className="rounded-full w-[150px] h-[150px]" />
-          </div>
-          <div>
-              <Link href={{pathname:"/lawyer", query:{category:lawyer.category, docid:lawyer.id}}}><h2 className='font-bold text-2xl'>{lawyer.name}</h2></Link>
-            <br />
-            <div>{lawyer.description}</div>
-            <br />
-            <div className='flex justify-between'>
-              <h6>Fee Structure: {lawyer.fees}</h6>
-            </div>
-            <br />
-            <div className='flex justify-between w-80'>
-              <h6 className='text-3xl'><a href={lawyer.linkedin}><BsLinkedin/></a></h6>
-              <h6 className='text-3xl'><a href={`tel:${lawyer.phone}`}><PiPhoneCallFill/></a></h6>
-              <h6 className='text-3xl'><a href={lawyer.instagram}><GrInstagram/></a></h6>
-              <h6 className='text-3xl'><a href={`mailto:${lawyer.email}`}><AiOutlineMail/></a></h6>
-              <h6 className='text-3xl'><a href={`mailto:${lawyer.website}`}><TbWorldWww/></a></h6>
-            </div>
-          </div>
-          <div>
-            <h5 className='font-bold text-xl w-80 flex justify-start items-center'>{lawyer.designation}</h5>
-            <br />
-            <div className='flex justify-between'>
-              <h6>Location: {lawyer.location}</h6>
-              <h6>Years of experience: {lawyer.years}</h6>
-            </div>
-            <br />
-            <div className='flex justify-between'>
-              <h6>Current: {lawyer.current}</h6>
-              <h6>Handled: {lawyer.handled}</h6>
-              <h6>Won: {lawyer.won}</h6>
-            </div>
-            <br />
-            <div className='flex justify-between'>
-              <h6>Language: {lawyer.language}</h6>
-              <h6>Availability: {lawyer.availability}</h6>
+        .filter((lawyer) => lawyer.verificationStatus === "verified")
+        .map((lawyer) => {
+          return (
+            <div >
+            <div className="p-10 flex items-center justify-center">
+              <div className="card lg:card-side bg-base-100 border border-accent w-[70%]">
+                <figure>
+                  <img
+                    src={lawyer.imgUrl}
+                    alt="Lawyer Photo"
+                    className="w-32 h-32 object-cover rounded-full m-8"
+                  />
+                </figure>
+                <div className="card-body">
+                  <Link
+                    href={{
+                      pathname: "/lawyer",
+                      query: { category: lawyer.category, docid: lawyer.id },
+                    }}
+                  >
+                    <h2 className="card-title">{lawyer.name}</h2>
+                  </Link>
+                  {/* main content */}
+                  <div>
+                    <p>
+                      <strong>Designation</strong> {lawyer.designation}
+                    </p>
+          
+                    <div className="grid grid-cols-2 ">
+                      <div>
+                        <p>{lawyer.description}</p>
+                        <p>
+                          <strong>Fee Structure / hr:</strong> {lawyer.fees}
+                        </p>
+                      </div>
+                      <div>
+                        <p>
+                          <strong>Location:</strong> {lawyer.location}
+                        </p>
+                        <p>
+                          <strong>Years of experience:</strong> {lawyer.years}
+                        </p>
+                      </div>
+          
+                      <div>
+                        <p>
+                          <strong>Handled:</strong> {lawyer.handled}
+                        </p>
+                        <p>
+                          <strong>Won:</strong> {lawyer.won}
+                        </p>
+                      </div>
+          
+                      <p>
+                        <strong>Language:</strong> {lawyer.language}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center">
+                      <p className="mr-4 text-2xl">
+                        <a href={lawyer.linkedin}>
+                          <FaLinkedin />
+                        </a>
+                      </p>
+                      <p className="mr-4 text-2xl">
+                        <a href={`tel:${lawyer.phone}`}>
+                          <IoCall />
+                        </a>
+                      </p>
+                      <p className="text-2xl">
+                        <a href={`mailto:${lawyer.email}`}>
+                          <IoMail />
+                        </a>
+                      </p>
+                    </div>
+                    <Link
+                      href={{
+                        pathname: "/lawyer",
+                        query: { category: lawyer.category, docid: lawyer.id },
+                      }}
+                    >
+                      <div className="card-actions justify-end">
+                        <button className="btn btn-primary">Know more!</button>
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           
-        </div>
-
-        )
-})}
-     
+          );
+        })}
     </div>
   );
 }

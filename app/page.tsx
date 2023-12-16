@@ -6,10 +6,10 @@ import Service from "@/Components/Service";
 export default function Home() {
   return (
     <>
-      {/* <Hero />
+      <Hero />
       <Service />
       <Slider />
-      <Blockquote /> */}
+      <Blockquote /> 
     </>
   );
 }

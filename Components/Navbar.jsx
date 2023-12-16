@@ -204,7 +204,7 @@ const Navbar = () => {
         </div>
         <div className='p-6 flex justify-evenly items-center'>
           <div className='w-40 h-30 flex justify-center items-center rounded form text-[#272829] outline outline-1 outline-offset-1 shadow-inner'>
-            <Link isVisible={showModal1} onClick={() => setShowModal1(false)} href={{ pathname: "/profilePage", query: { collectionName: "civil" } }}><button>Civil Layyers</button></Link>
+            <Link isVisible={showModal1} onClick={() => setShowModal1(false)} href={{ pathname: "/profilePage", query: { collectionName: "Civil" } }}><button>Civil Layyers</button></Link>
           </div>
           <div className='w-40 h-30 flex justify-center items-center rounded form text-[#272829] outline outline-1 outline-offset-1 shadow-inner'>
             <Link isVisible={showModal1} onClick={() => setShowModal1(false)} href={{ pathname: "/profilePage", query: { collectionName: "criminal" } }}><button>Criminal Lawyer</button></Link>
