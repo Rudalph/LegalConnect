@@ -9,7 +9,11 @@ export default function Home() {
       <Hero />
       <Service />
       <Slider />
+<<<<<<< HEAD
       <Blockquote /> 
+=======
+      <Blockquote />
+>>>>>>> 78f3ebcaafbfcb94e100dd3e849489a283049f62
     </>
   );
 }

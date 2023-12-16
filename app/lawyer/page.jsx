@@ -10,17 +10,24 @@ import { TbWorldWww } from 'react-icons/tb';
 import QRCode from "qrcode.react";
 import { collection, addDoc } from 'firebase/firestore';
 
-import PubNub from 'pubnub';
-import { PubNubProvider, usePubNub } from 'pubnub-react';
+
+
+
 
 const page = ({ searchParams }) => {
 
 
   const [lawyer, setLawyer] = useState([]);
-  const [lawyerUserID, setLawyerUserID] = useState('')
-  const [channelName, setChannelName] = useState('');
-  
-  // const LawyersSelectedClient = 'phqjRQCHK5Qfxm8NshgUIKAx4bE2rD2ykW5G0UPQTD3wYjIj1eq6fIw1';
+  const [lawyerUserID, setLawyerUserID] = useState('');
+  const [clientUserID, setClientUserID] = useState('');
+  var chatCollectionName = '';
+  const [message, setMessage] = useState({
+    body:'',
+  });
+  const [fetchedMessages, setFetchedMessages] = useState([]);
+  const [documentsWithSubstring, setDocumentsWithSubstring] = useState([]);
+  const [lawyerWantsToTalkTo, setLawyerWantsToTalkTo] = useState('');
+
   
   useEffect(() => {
     
@@ -31,22 +38,12 @@ const page = ({ searchParams }) => {
         if (docSnap.exists()) {
           console.log("Document data:", docSnap.data());
           setLawyer([docSnap.data()]);
-          setLawyerUserID(docSnap.data().userID);    
-          const current = auth.currentUser;
-          const clientID = current.uid;
 
-          if(clientID==docSnap.data().userID)
-          {
-              setChannelName(LawyersSelectedClient);
-          }
-          else
-          {
-             console.log(clientID+(docSnap.data().userID))    
-             setChannelName(clientID+(docSnap.data().userID))      
-          }
+          setLawyerUserID(docSnap.data().userID);
+
+          const user = auth.currentUser;  
+          setClientUserID(user.uid);
         } else {
-          // docSnap.data() will be undefined in this case
-
           alert("No such document!");
         }
       } catch (error) {
@@ -62,196 +59,112 @@ const page = ({ searchParams }) => {
 
   }, [searchParams.category, searchParams.docid]);
 
-
-  const [documents, setDocuments] = useState([]);
-
-  const fetchDocuments = async () => {
-    try {
-      const collectionRef = collection(db, 'collections');
-      const querySnapshot = await getDocs(collectionRef);
-
-      const fetchedDocuments = [];
-      querySnapshot.forEach((doc) => {
-        const data = doc.data();
-        if (data.collectionName && data.collectionName.includes(`${lawyerUserID}`)) {
-          fetchedDocuments.push({ id: doc.id, ...data });
+  const sendMessage = async () => {
+    if(lawyerUserID===clientUserID)
+    {
+      if(lawyerWantsToTalkTo==='')
+      {
+        alert("Please select the chat to start the conversation");
+      }
+      else
+      {
+        chatCollectionName = lawyerWantsToTalkTo;
+        alert(chatCollectionName);
+        alert(message.body);
+        fetchChatLawyersMessages();
+        try {
+          const docRef = await addDoc(collection(db, `${chatCollectionName}`), {
+            body:message.body,
+          });
+          alert("Document written with ID: " + docRef.id);
+        } catch (error) {
+          alert("Error adding document: " + error);
         }
-      });
+      }
+      
+      try {
+        const allChatCollectionRef = collection(db, 'allChatCollections');
+        const querySnapshot = await getDocs(query(allChatCollectionRef, where('name', '>=', lawyerUserID), where('name', '<=', `${lawyerUserID}\uf8ff`)));
 
-      setDocuments(fetchedDocuments);
-    } catch (error) {
-      console.error('Error fetching documents: ', error);
+        const documentsWithMatchingUserID = querySnapshot.docs.map(doc => ({ id: doc.id, data: doc.data() }));
+        setDocumentsWithSubstring(documentsWithMatchingUserID);
+      } catch (error) {
+        console.error('Error fetching matching documents:', error);
+      }
+    
     }
-  };
+    else
+    {
+      chatCollectionName = lawyerUserID + clientUserID;
+      alert(chatCollectionName);
+      alert(message.body);
+      fetchChatMessages();
+      try {
+        const docRef = await addDoc(collection(db, `${chatCollectionName}`), {
+          body:message.body,
+        });
+        alert("Document written with ID: " + docRef.id);
+      } catch (error) {
+        alert("Error adding document: " + error);
+      }
+      
+      const allChatCollectionRef = collection(db, 'allChatCollections');
+      const querySnapshot = await getDocs(query(allChatCollectionRef, where('name', '==', chatCollectionName)));
 
-  useEffect(() => {
-    fetchDocuments();
-  }, []);
+        if (querySnapshot.empty) {
+          try {
+            const docRef1 = await addDoc(collection(db, 'allChatCollections'), {
+              name: chatCollectionName,
+            });
+            alert("Document written with ID: " + docRef1.id);
+          } catch (error) {
+            alert("Error adding document: " + error);
+          }
+        } else {
+          alert("Document already exists in the collection");
+        }
+    }
 
-  const lawyerWantsToTalkTo = (lwto_channelName) => {
-    setChannelName(lwto_channelName);
+    
   }
 
-
-  const pubnub = new PubNub({
-    publishKey: 'pub-c-cf833fc4-d512-499d-bdad-e08767f22c8c',
-    subscribeKey: 'sub-c-62631922-a8eb-4a2d-95c3-6405910d78a4',
-    uuid: 'sec-c-MWYwM2IyNDItZmZiMC00ZGU5LWIyMTEtM2EwOWNjNjE1YTU2'
-  });
-
-  function Chat() {
-    const pubnub = usePubNub();
-
-      const [channels] = useState([channelName]);
-      const [messages, addMessage] = useState([]);
-      const [message, setMessage] = useState('');
   
-      const handleMessage = event => {
-        const message = event.message;
-        if (typeof message === 'string' || message.hasOwnProperty('text')) {
-          const text = message.text || message;
-          addMessage(messages => [...messages, text]);
+   
+      const fetchChatMessages = async () => {
+        try {
+          const querySnapshot = await getDocs(collection(db, chatCollectionName));
+          const data = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+          setFetchedMessages(data);
+          alert("Fetching working well");
+        } catch (error) {
+          console.error('Error fetching data:', error);
+          alert("Fetching Failed");
         }
-      };
-      
+      };  
 
-      const sendMessage =  async message => {
-        if (message) {
-          pubnub
-            .publish({ channel: channels[0], message })
-            .then(() => setMessage(''));
-            console.log(message);
-            try {
-      
-              const docRef = await addDoc(collection(db, `${channelName}`), {
-                message:message
-              })
-              
-              const collectionRef = collection(db, 'collections');
-              const querySnapshot = await getDocs(query(collectionRef, where('collectionName', '==', channelName)));
-              if (querySnapshot.empty) {
-                await addDoc(collectionRef, { collectionName: channelName });
-              } else {
-                // Handle the case where the channelName already exists
-                console.log('Channel name already exists:', channelName);
-              }
-              
-            } catch (error) {
-              alert("here Error adding document: " + error);
-            }
-
+      const fetchChatLawyersMessages = async () => {
+        try {
+          const querySnapshot = await getDocs(collection(db, chatCollectionName));
+          const data = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+          setFetchedMessages(data);
+          alert("Fetching working well");
+        } catch (error) {
+          console.error('Error fetching data:', error);
+          alert("Fetching Failed");
         }
-      };
+      };  
+
+ const LawyersChatCollectionName = async (receivedCollectionName) => {
+   var rcn=receivedCollectionName;
+   alert(rcn);
+   setLawyerWantsToTalkTo(rcn);
+ }
+   
     
-    
+  
 
-    
+  
 
-useEffect(() => {
-const listenerParams = { message: handleMessage }
-pubnub.addListener(listenerParams);
-pubnub.subscribe({ channels });
-      return () => {
-pubnub.unsubscribe({ channels })
-pubnub.removeListener(listenerParams)
-}
-}, [pubnub, channels]);
-
-    return (
-      <div style={pageStyles}>
-        <div style={chatStyles}>
-          <div style={headerStyles}>React Chat Example</div>
-          <div style={listStyles}>
-            {messages.map((message, index) => {
-              return (
-                <div key={`message-${index}`} style={messageStyles}>
-                  {message}
-                </div>
-              );
-            })}
-          </div>
-          <div style={footerStyles}>
-            <input
-              type="text"
-              style={inputStyles}
-              placeholder="Type your message"
-              value={message}
-              onKeyPress={e => {
-                if (e.key !== 'Enter') return;
-                sendMessage(message);
-              }}
-              onChange={e => setMessage(e.target.value)}
-            />
-            <button
-              style={buttonStyles}
-              onClick={e => {
-                e.preventDefault();
-                sendMessage(message);
-              }}
-            >
-              Send Message
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  const pageStyles = {
-    alignItems: 'center',
-    background: '#282c34',
-    display: 'flex',
-    justifyContent: 'center',
-    minHeight: '100vh',
-  };
-
-  const chatStyles = {
-    display: 'flex',
-    flexDirection: 'column',
-    height: '50vh',
-    width: '50%',
-  };
-
-  const headerStyles = {
-    background: '#323742',
-    color: 'white',
-    fontSize: '1.4rem',
-    padding: '10px 15px',
-  };
-
-  const listStyles = {
-    alignItems: 'flex-start',
-    backgroundColor: 'white',
-    display: 'flex',
-    flexDirection: 'column',
-    flexGrow: 1,
-    overflow: 'auto',
-    padding: '10px',
-  };
-
-  const messageStyles = {
-    backgroundColor: '#eee',
-    borderRadius: '5px',
-    color: '#333',
-    fontSize: '1.1rem',
-    margin: '5px',
-    padding: '8px 15px',
-  };
-
-  const footerStyles = {
-    display: 'flex',
-  };
-
-  const inputStyles = {
-    flexGrow: 1,
-    fontSize: '1.1rem',
-    padding: '10px 15px',
-  };
-
-  const buttonStyles = {
-    fontSize: '1.1rem',
-    padding: '10px 15px',
-  };
 
  
 
@@ -297,38 +210,38 @@ pubnub.removeListener(listenerParams)
                           </div>
                         </div>
                 </div>
-             
-                <div className='p-4 rounded form text-[#272829] outline outline-1 outline-offset-1 shadow-inner my-3 flex justify-around gap-5 items-start h-96 w-96'>
                 <div>
 
+                  <input type="text" onChange={(event)=>setMessage((prev) => ({...prev, body: event.target.value}))} value={message.body} />
+                  <button onClick={sendMessage}>send</button>
                 
-                <PubNubProvider client={pubnub}>
-                        <Chat />
-               </PubNubProvider>
-         
-          
-                  </div>
-                </div>
+               </div>
+               <div>
+    
 
+                  <div>
+                      <h1>Messages from Firebase Collection</h1>
+                      <ul>
+                        {fetchedMessages.map((msg) => (
+                          <li key={msg.id}>{msg.body}</li>
+                        ))}
+                      </ul>
+                    </div>
+               </div>
+
+               <h1>Documents with substring:</h1>
                 <div>
-                <div>
-                        <h1>Fetched Documents:</h1>
-                        <ul>
-                          {documents.map((doc) => (
-                            <li key={doc.id}>
-                              {/* <p onClick={() => setChannelName(doc.collectionName)}>{doc.collectionName}</p> */}
-                              <p onClick={() => lawyerWantsToTalkTo(doc.collectionName)}>{doc.collectionName}</p>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                     </div>
+                  {documentsWithSubstring.map((doc) => (
+                    <div onClick={() => LawyersChatCollectionName(doc.data.name)} key={doc.id}>{doc.data.name}</div>
+                  ))}
+                </div>
             </div>
           )
         })}
     </div>
 
   )
-}
+      }
+
 
 export default page;
