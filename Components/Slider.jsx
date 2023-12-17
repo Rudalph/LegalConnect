@@ -14,46 +14,59 @@ import Image from "next/image";
 
 export default function App() {
   return (
-    <Splide
-      options={{
-        type: "loop",
-        gap: "10px",
-        drag: "free",
-        arrows: false,
-        pagination: false,
-        perPage: 5,
-        autoScroll: {
-          pauseOnHover: false,
-          pauseOnFocus: false,
-          rewind: false,
-          speed: 1
-        }
-      }}
-      extensions={{ AutoScroll }}
-    >
-      <SplideSlide>
-        <Image src={Slider1} alt="Image 1" />
-      </SplideSlide>
-      <SplideSlide>
-        <Image src={Slider2} alt="Image 2" />
-      </SplideSlide>
-      <SplideSlide>
-        <Image src={Slider3} alt="Image 3" />
-      </SplideSlide>
-      <SplideSlide>
-        <Image src={Slider4} alt="Image 4" />
-      </SplideSlide>
-      <SplideSlide>
-        <Image src={Slider5} alt="Image 5" />
-      </SplideSlide>
-      <SplideSlide>
-        <Image src={Slider6} alt="Image 6" />
-      </SplideSlide>
-      <SplideSlide>
-        <Image src={Slider7} alt="Image 7" />
-      </SplideSlide><SplideSlide>
-        <Image src={Slider8} alt="Image 8" />
-      </SplideSlide>
-    </Splide>
+    <>
+      <div className="flex flex-col items-center justify-center mb-20">
+        <div className="flex justify-center my-1">
+          <p className="text-sm font-semibold text-[#2BB4FD]">COLLABORATE</p>
+        </div>
+        <div>
+          <h2 className="text-4xl mb-2 font-bold text-[#344B66]">Our Partners</h2>
+        </div>
+        <div className="flex justify-center mb-4">
+          <p className="text-sm text-gray-400">Building Strong Alliances for a Unified Legal Ecosystem</p>
+        </div>
+      </div>
+      <Splide
+        options={{
+          type: "loop",
+          gap: "10px",
+          drag: "free",
+          arrows: false,
+          pagination: false,
+          perPage: 5,
+          autoScroll: {
+            pauseOnHover: false,
+            pauseOnFocus: false,
+            rewind: false,
+            speed: 1
+          }
+        }}
+        extensions={{ AutoScroll }}
+        >
+        <SplideSlide>
+          <Image src={Slider1} alt="Image 1" />
+        </SplideSlide>
+        <SplideSlide>
+          <Image src={Slider2} alt="Image 2" />
+        </SplideSlide>
+        <SplideSlide>
+          <Image src={Slider3} alt="Image 3" />
+        </SplideSlide>
+        <SplideSlide>
+          <Image src={Slider4} alt="Image 4" />
+        </SplideSlide>
+        <SplideSlide>
+          <Image src={Slider5} alt="Image 5" />
+        </SplideSlide>
+        <SplideSlide>
+          <Image src={Slider6} alt="Image 6" />
+        </SplideSlide>
+        <SplideSlide>
+          <Image src={Slider7} alt="Image 7" />
+        </SplideSlide><SplideSlide>
+          <Image src={Slider8} alt="Image 8" />
+        </SplideSlide>
+      </Splide>
+    </>
   );
 }

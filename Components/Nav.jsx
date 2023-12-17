@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import Logo from "@/public/images/Ministry_of_Law_and_Justice.png";
+import Logo from "@/public/images/LegalConnect.png";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -40,13 +40,14 @@ export default function Nav() {
   return (
     <div>
       <div className="navbar ">
-        <div className="flex-1">
-          <a href="https://lawmin.gov.in/">
-            <Image src={Logo} alt="Logo" width={175} height={200} />
+        <div className="flex flex-1 flex-row">
+          <a className="flex flex-row" href="https://lawmin.gov.in/">
+            <Image src={Logo} alt="Logo" className="w-9 mr-1" width={175} height={200} />
+            <div className="text-xl flex items-center font-bold text-[#344B66]">Legal Connect</div>
           </a>
         </div>
         <div className="flex-none ">
-          <ul className="menu menu-horizontal px-1  flex items-center justify-center space-x-4">
+          <ul className="menu menu-horizontal px-1 py-0 flex items-center justify-center space-x-4">
             <li className="pr-7">
               <Link href="/">Home</Link>
             </li>

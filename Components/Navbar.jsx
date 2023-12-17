@@ -154,7 +154,7 @@ const Navbar = () => {
        <Modal isVisible={showModal} onClose={()=>setShowModal(false)} > 
         <div className='p-5'>
             <h1 className='flex justify-center items-center text-2xl heading'>
-                LAWYER'S REGISTRATION FORM
+                LAWYER&apos;S REGISTRATION FORM
             </h1>
         </div>
         <form className="form">

@@ -46,7 +46,7 @@ export default function Service() {
       tags: ["AI Assistant", "Automation"],
     },
     {
-      title: "Legal Document Simplification",
+      title: "Document Simplification",
       description: "Simplify complex legal documents for easy comprehension.",
       rowSpan: 3,
       image:
@@ -54,7 +54,7 @@ export default function Service() {
       tags: ["Document Simplification"],
     },
     {
-      title: "Legal Document Generation",
+      title: "Document Generation",
       description: "Efficiently generate and edit legally compliant documents.",
       image:
         "https://img.freepik.com/free-vector/file-transfer-concept-illustration_114360-580.jpg?w=740&t=st=1702467842~exp=1702468442~hmac=3c03b41414c5b39e7abba2cade1944c0dc13aa42d1964ef89988a42c095d630e",
@@ -87,29 +87,29 @@ export default function Service() {
   ];
 
   return (
-    <div>
+    <div className="">
       {/* Our Services */}
-      <div className="grid gap-2 mt-8 py-16">
+      <div className="grid gap-1 mt-8 py-16">
         <div className="flex justify-center my-1">
-          <p className="text-sm font-semibold text-[#7B6EEA]">EXPLORE</p>
+          <p className="text-sm font-semibold text-[#2BB4FD]">EXPLORE</p>
         </div>
-        <h1 className="text-4xl mb-2 font-bold text-[#242336] tracking-tight text-center">
+        <h1 className="text-4xl mb-2 font-bold text-[#344B66] tracking-tight text-center">
           Our Services
         </h1>
         <div className="flex justify-center">
           <p className="text-sm text-gray-400">Get Reliable Tools for Legal Documentation tasks</p>
         </div>
         <div className="flex flex-col justify-center items-center">
-          <div className="grid mx-auto grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2  py-12">
+          <div className="grid mx-auto grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4  py-12">
             {our_services.map((e) => (
               <div
                 key={e.title}
                 className={cn(
-                  "group relative gap-4 overflow-clip rounded-xl md:w-[400px] my-6 md:h-[470px] card bg-base-100 shadow-xl",
+                  "group relative gap-4 overflow-clip rounded-xl md:w-[350px] my-6 md:h-[470px] card bg-base-100 shadow-xl",
                   e.rowSpan && `row-span-${e.rowSpan}`
                 )}
               >
-                <div className="h-[270px]">
+                <div className="h-[230px]">
                   <img
                     src={e.image}
                     alt={e.title}
@@ -123,7 +123,7 @@ export default function Service() {
                     {e.tags.map((tag) => (
                       <div
                         key={tag}
-                        className=" bg-[#F1EFFF] cursor-pointer rounded-xl text-[#7B6EEA] text-sm py-3 px-5 "
+                        className=" bg-[#EBF3FF] cursor-pointer rounded-lg text-[#3F8DFD] text-sm py-3 px-5 "
                       >
                         {tag}
                       </div>
@@ -137,11 +137,11 @@ export default function Service() {
       </div>
 
       {/*Our values */}
-      <div className="mx-auto grid max-w-7xl gap-2 py-2 mt-8 pb-6">
+      <div className="mx-auto grid max-w-7xl gap-1 py-2 mt-8 mb-14  pb-6">
         <div className="flex justify-center my-1">
-          <p className="text-sm font-semibold text-[#7B6EEA]">UNDERSTAND</p>
+          <p className="text-sm font-semibold text-[#2BB4FD]">UNDERSTAND</p>
         </div>
-        <h1 className="text-4xl mb-2 font-bold text-[#242336] tracking-tight text-center">
+        <h1 className="text-4xl mb-2 font-bold text-[#344B66] tracking-tight text-center">
           Our Values
         </h1>
         <div className="flex justify-center mb-4">
@@ -152,10 +152,10 @@ export default function Service() {
           {our_values.map((e) => (
             <div key={e.title} className="flex flex-col gap-4 text-center">
               <div className="h-fit w-fit rounded-lg bg-muted p-4 mx-auto">
-                {<e.icon className="h-12 w-12 hover:text-[#7B6EEA]" />}
+                {<e.icon className="h-12 w-12 text-[#344B66] hover:text-[#2BB4FD]" />}
               </div>
               <div className="grid gap-3">
-                <h4 className="text-2xl font-semibold">{e.title}</h4>
+                <h4 className="text-2xl text-[#344B66] font-semibold">{e.title}</h4>
                 <p className="font-light text-sm text-gray-500">{e.description}</p>
               </div>
             </div>

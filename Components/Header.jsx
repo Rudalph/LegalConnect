@@ -1,4 +1,6 @@
 import React from "react";
+import Image from "next/image";
+
 
 export default function Header() {
   return (
@@ -10,7 +12,12 @@ export default function Header() {
         title="भारत सरकार"
         role="link"
       >
-        भारत सरकार | Government of India
+        <div className="ministry-logo">
+          <Image />
+        </div>
+        <div className="">
+          भारत सरकार | Government of India
+        </div>
       </a>
       <ul className="menu menu-vertical sm:menu-horizontal bg-base-200 rounded-box place-self-end p-1" >
         <li>
