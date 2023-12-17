@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { useEffect } from "react";
-import app from "@/Components/firebase";
+import {app} from "@/Components/firebase";
 import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
 import Dropdown from "@/Components/Dropdown"
 

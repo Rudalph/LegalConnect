@@ -5,6 +5,7 @@ import { GoGoal } from "react-icons/go";
 import { FaBoltLightning } from "react-icons/fa6";
 import { TbBulbFilled } from "react-icons/tb";
 import { MdOutlineSecurity } from "react-icons/md";
+import Image from 'next/image'
 
 export default function Service() {
   const our_values = [
@@ -54,7 +55,7 @@ export default function Service() {
     },
     {
       title: "Legal Document Generation",
-      description: "Efficiently generate legally compliant documents.",
+      description: "Efficiently generate and edit legally compliant documents.",
       image:
         "https://img.freepik.com/free-vector/file-transfer-concept-illustration_114360-580.jpg?w=740&t=st=1702467842~exp=1702468442~hmac=3c03b41414c5b39e7abba2cade1944c0dc13aa42d1964ef89988a42c095d630e",
       tags: ["Document Generation", "Automation"],
@@ -88,60 +89,74 @@ export default function Service() {
   return (
     <div>
       {/* Our Services */}
-      <div className="mx-auto grid max-w-7xl gap-6 py-16">
-        <h1 className="text-4xl font-semibold tracking-tight text-center">
+      <div className="grid gap-2 mt-8 py-16">
+        <div className="flex justify-center my-1">
+          <p className="text-sm font-semibold text-[#7B6EEA]">EXPLORE</p>
+        </div>
+        <h1 className="text-4xl mb-2 font-bold text-[#242336] tracking-tight text-center">
           Our Services
         </h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 border-t-2 border-foreground py-12">
-          {our_services.map((e) => (
-            <div
-              key={e.title}
-              className={cn(
-                "group relative gap-4 overflow-clip rounded-xl card bg-base-100 shadow-xl",
-                e.rowSpan && `row-span-${e.rowSpan}`
-              )}
-            >
-              <figure>
-                <img
-                  src={e.image}
-                  alt={e.title}
-                  className="w-full h-full object-cover"
-                />
-              </figure>
-              <div className="card-body">
-                <h2 className="card-title">{e.title}</h2>
-                <p>{e.description}</p>
-                <div className="card-actions justify-end p-2">
-                  {e.tags.map((tag) => (
-                    <div
-                      key={tag}
-                      className="badge badge-outline badge-primary hover:bg-primary hover:text-white"
-                    >
-                      {tag}
-                    </div>
-                  ))}
+        <div className="flex justify-center">
+          <p className="text-sm text-gray-400">Get Reliable Tools for Legal Documentation tasks</p>
+        </div>
+        <div className="flex flex-col justify-center items-center">
+          <div className="grid mx-auto grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2  py-12">
+            {our_services.map((e) => (
+              <div
+                key={e.title}
+                className={cn(
+                  "group relative gap-4 overflow-clip rounded-xl md:w-[400px] my-6 md:h-[470px] card bg-base-100 shadow-xl",
+                  e.rowSpan && `row-span-${e.rowSpan}`
+                )}
+              >
+                <div className="h-[270px]">
+                  <img
+                    src={e.image}
+                    alt={e.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="card-body pb-8 px-5 pt-0">
+                  <h2 className="card-title text-2xl font-semibold ">{e.title}</h2>
+                  <p className="text-sm  text-gray-500">{e.description}</p>
+                  <div className="card-actions justify-start py-2 ">
+                    {e.tags.map((tag) => (
+                      <div
+                        key={tag}
+                        className=" bg-[#F1EFFF] cursor-pointer rounded-xl text-[#7B6EEA] text-sm py-3 px-5 "
+                      >
+                        {tag}
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
 
       {/*Our values */}
-      <div className="mx-auto grid max-w-7xl gap-6 py-2 pb-6">
-        <h1 className="text-4xl font-semibold tracking-tight text-center">
+      <div className="mx-auto grid max-w-7xl gap-2 py-2 mt-8 pb-6">
+        <div className="flex justify-center my-1">
+          <p className="text-sm font-semibold text-[#7B6EEA]">UNDERSTAND</p>
+        </div>
+        <h1 className="text-4xl mb-2 font-bold text-[#242336] tracking-tight text-center">
           Our Values
         </h1>
+        <div className="flex justify-center mb-4">
+          <p className="text-sm text-gray-400">Discover the Core Principles Guiding Our Legal Services</p>
+        </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 border-t-2 border-foreground py-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8  py-12">
           {our_values.map((e) => (
             <div key={e.title} className="flex flex-col gap-4 text-center">
               <div className="h-fit w-fit rounded-lg bg-muted p-4 mx-auto">
-                {<e.icon className="h-12 w-12" />}
+                {<e.icon className="h-12 w-12 hover:text-[#7B6EEA]" />}
               </div>
               <div className="grid gap-3">
                 <h4 className="text-2xl font-semibold">{e.title}</h4>
-                <p className="font-light">{e.description}</p>
+                <p className="font-light text-sm text-gray-500">{e.description}</p>
               </div>
             </div>
           ))}
