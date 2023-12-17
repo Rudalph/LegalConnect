@@ -42,23 +42,23 @@ export default function Nav() {
       <div className="navbar ">
         <div className="flex flex-1 flex-row">
           <a className="flex flex-row" href="https://lawmin.gov.in/">
-            <Image src={Logo} alt="Logo" className="w-9 mr-1" width={175} height={200} />
+            <Image src={Logo} alt="Logo" className="w-8 mr-1" width={175} height={200} />
             <div className="text-xl flex items-center font-bold text-[#344B66]">Legal Connect</div>
           </a>
         </div>
         <div className="flex-none ">
-          <ul className="menu menu-horizontal px-1 py-0 flex items-center justify-center space-x-4">
-            <li className="pr-7">
+          <ul className="px-1 py-0 flex items-center bg-white hover:bg-white justify-center space-x-7">
+            <li className="hover:bg-white text-sm font-semibold text-gray-400 cursor-pointer hover:text-[#344B66]">
               <Link href="/">Home</Link>
             </li>
-            <li className="pr-7">
+            <li className="hover:bg-white text-sm font-semibold text-gray-400 cursor-pointer hover:text-[#344B66]">
               <Link href="/Lawer_Register">Lawyer Registration</Link>
             </li>
-            <Dropdown/>
+            <Dropdown className="bg-white hover:bg-white"/>
             
-            <li className="pr-7 btn btn-ghost hover:bg-primary hover:text-white border border-primary">
+            <li className={` ${isLoggedIn?"":"hidden"} `}>
               {isLoggedIn ? (
-                <button onClick={displayDetails}>User Details</button>
+                <button className="font-semibold text-sm text-gray-400 hover:text-black" onClick={displayDetails}>User Details</button>
               ) : (
                 <></>
               )}
@@ -67,7 +67,7 @@ export default function Nav() {
             {/* <li className="btn btn-ghost hover:bg-primary hover:text-white border border-primary">
               <Link href="/Signup">Register</Link>
             </li> */}
-            <li className="btn btn-ghost hover:bg-primary hover:text-white border border-primary">
+            <li className="">
               <Link href="/Login">Login</Link>
             </li>
           </ul>
