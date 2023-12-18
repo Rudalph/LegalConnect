@@ -5,7 +5,7 @@ import { getAuth, createUserWithEmailAndPassword, signInWithRedirect, GoogleAuth
 import emailjs from 'emailjs-com';
 import { FcGoogle } from "react-icons/fc";
 import { FaSignInAlt } from "react-icons/fa";
-import app from "@/Components/firebase";
+import {app} from "@/Components/firebase";
 import { auth } from '@/Components/firebase';
 
 
