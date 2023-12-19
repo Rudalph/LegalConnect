@@ -13,9 +13,9 @@ export default function Header() {
         role="link"
       >
         <div className="ministry-logo border border-y-0 border-l-0 border-r-1">
-          <Image className="w-32 pr-4" src='https://i.ibb.co/Qjpt0vL/1.png' alt="Ministry of Law and Justice"/>
+          <img className="w-32 pr-4" src='https://i.ibb.co/Qjpt0vL/1.png' alt="Ministry of Law and Justice"/>
         </div>
-        <div className="flex items-center justify-center pt-2">
+        <div className="flex items-center text-white justify-center pt-2">
           भारत सरकार | Government of India
         </div>
       </a>

@@ -135,7 +135,7 @@ const Navbar = () => {
     <div>
         <nav className='bg-[#272829] text-white h-20 p-5 flex justify-between'>
             <div>
-                <Link href={"/"}><p className='logo-text text-4xl text-[#FFF6E0]'>Legal Connect</p></Link>
+                <Link href={"/"}><p className=' text-4xl text-white'>Legal Connect</p></Link>
             </div>
            <div className="grid grid-flow-col justify-stretch font-semibold">
                 {isLoggedIn?(

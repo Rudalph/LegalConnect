@@ -43,11 +43,11 @@ export default function Nav() {
         <div className="flex flex-1 flex-row">
           <a className="flex flex-row" href="https://lawmin.gov.in/">
             <Image src={Logo} alt="Logo" className="w-8 mr-1" width={175} height={200} />
-            <div className="text-xl flex items-center font-bold text-[#344B66]">Legal Connect</div>
+            <div className="text-xl flex items-center font-bold text-white">Legal Connect</div>
           </a>
         </div>
         <div className="flex-none ">
-          <ul className="px-1 py-0 flex items-center bg-white hover:bg-white justify-center space-x-7">
+          <ul className="px-1 py-0 flex items-center  justify-center space-x-7">
             <li className="hover:bg-white text-sm font-semibold text-gray-400 cursor-pointer hover:text-[#344B66]">
               <Link href="/">Home</Link>
             </li>
