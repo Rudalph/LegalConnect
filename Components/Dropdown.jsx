@@ -24,7 +24,7 @@ export default function Dropdown() {
           >
             {lawyerCategories.map((category) => (
               <li key={category}>
-                <Link href={{ pathname: '/profilePage', query: { collectionName: category } }}>
+                <Link href={{ pathname: '/profilePage', query: { collectionName: category.toLowerCase() } }}>
                   {category}
                 </Link>
               </li>
