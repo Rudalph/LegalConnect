@@ -6,7 +6,7 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 
  
-const page = () => {
+const Page = () => {
 
   const [loginValues, setLoginValues] = useState({
     email:'',
@@ -100,7 +100,7 @@ const page = () => {
               </div>
               <div className="mt-4 text-center">
                 <p className="text-base">
-                  Don't have an account?{' '}
+                  Dont have an account?{' '}
                   <Link href={'/Signup'} className="text-primary font-bold">
                     Sign Up
                   </Link>
@@ -148,4 +148,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

@@ -14,7 +14,7 @@ import { collection, addDoc, updateDoc } from 'firebase/firestore';
 
 
 
-const page = ({ searchParams }) => {
+const Page = ({ searchParams }) => {
 
 
   const [lawyer, setLawyer] = useState([]);
@@ -311,4 +311,4 @@ const page = ({ searchParams }) => {
       }
 
 
-export default page;
+export default Page;
