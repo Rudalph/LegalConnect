@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { FaAngleDown } from "react-icons/fa";
 
 export default function Dropdown() {
-  const lawyerCategories = ['Civil', 'Criminal', 'Corporate', 'Family', 'Labor', 'Tax', 'Injury', 'Public', 'Estate', 'Medical'];
+  const lawyerCategories = ['civil', 'criminal', 'corporate', 'family', 'labor', 'tax', 'injury', 'public', 'estate', 'medical'];
 
   return (
     <div className="group">
