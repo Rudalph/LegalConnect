@@ -5,9 +5,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { useEffect } from "react";
-import {app} from "@/Components/firebase";
+import { app } from "@/Components/firebase";
 import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
-import Dropdown from "@/Components/Dropdown"
+import Dropdown from "@/Components/Dropdown";
 
 export default function Nav() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -36,14 +36,37 @@ export default function Nav() {
   const displayDetails = () => {
     setShowAlert(true);
   };
+  const logOut = () => {
+    if (isLoggedIn) {
+      const auth = getAuth();
+      signOut(auth)
+        .then(() => {
+          setIsLoggedIn(false); // Update state after successful sign-out
+          alert("Signout Successful");
+        })
+        .catch((error) => {
+          console.error("Sign-out error", error);
+        });
+    } else {
+      alert("You are not logged in");
+    }
+  };
 
   return (
     <div>
       <div className="navbar bg-[#017E7E] ">
         <div className="flex flex-1 flex-row">
           <a className="flex flex-row" href="https://lawmin.gov.in/">
-            <Image src={Logo} alt="Logo" className="w-8 mr-1" width={175} height={200} />
-            <div className="text-xl flex items-center font-bold text-white">Legal Connect</div>
+            <Image
+              src={Logo}
+              alt="Logo"
+              className="w-8 mr-1"
+              width={175}
+              height={200}
+            />
+            <div className="text-xl flex items-center font-bold text-white">
+              Legal Connect
+            </div>
           </a>
         </div>
         <div className="flex-none ">
@@ -54,11 +77,16 @@ export default function Nav() {
             <li className="hover:bg-white text-sm font-semibold text-gray-400 cursor-pointer hover:text-[#344B66]">
               <Link href="/Lawer_Register">Lawyer Registration</Link>
             </li>
-            <Dropdown className="bg-white hover:bg-white"/>
-            
-            <li className={` ${isLoggedIn?"":"hidden"} `}>
+            <Dropdown className="bg-white hover:bg-white" />
+
+            <li className={` ${isLoggedIn ? "" : "hidden"} `}>
               {isLoggedIn ? (
-                <button className="font-semibold text-sm text-gray-400 hover:text-black" onClick={displayDetails}>User Details</button>
+                <button
+                  className="font-semibold text-sm text-gray-400 hover:text-black"
+                  onClick={displayDetails}
+                >
+                  User Details
+                </button>
               ) : (
                 <></>
               )}
@@ -70,10 +98,18 @@ export default function Nav() {
             <li className="">
               <Link href="/Login">Login</Link>
             </li>
+            <li>
+              <button
+                className="btn btn-sm bg-accent text-white hover:text-black"
+                onClick={logOut}
+              >
+                Logout
+              </button>
+            </li>
           </ul>
         </div>
       </div>
-            
+
       {showAlert && (
         <div
           role="alert"
