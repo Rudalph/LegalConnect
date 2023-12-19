@@ -39,7 +39,7 @@ export default function Nav() {
 
   return (
     <div>
-      <div className="navbar ">
+      <div className="navbar bg-[#017E7E] ">
         <div className="flex flex-1 flex-row">
           <a className="flex flex-row" href="https://lawmin.gov.in/">
             <Image src={Logo} alt="Logo" className="w-8 mr-1" width={175} height={200} />
