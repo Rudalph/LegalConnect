@@ -229,7 +229,7 @@ const Page = ({ searchParams }) => {
     <div>
         {lawyer.map((law)=>{
           return(
-            <div className='flex justify-around'>
+            <div key={law.name}className='flex justify-around'>
                  <div className='p-4 rounded form text-[#272829] outline outline-1 outline-offset-1 shadow-inner my-3  gap-5 h-fit w-96'>
                         <div className='flex justify-center'>
                            <img src={law.imgUrl} alt="" className="rounded-full w-[150px] h-[150px]" />

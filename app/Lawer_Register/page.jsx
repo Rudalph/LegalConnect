@@ -70,7 +70,7 @@ export default function Page() {
                
         <div className="flex justify-center items-center mt-20 mb-20">
           <div className="card bg-base-100 p-6 w-full max-w-screen-lg md:w-4/5 lg:w-3/4 xl:w-2/3 ">
-            <h2 className="text-2xl font-bold">Lawyer's Registration</h2>
+            <h2 className="text-2xl font-bold">Lawyers Registration</h2>
             <hr className="my-4 border-t-2 border-base-200 p-2 shadow-2xl rounded-2xl" />
             <form className="grid grid-cols-2 gap-6 md:grid-cols-2 ">
                <div> 
