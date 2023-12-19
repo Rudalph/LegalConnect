@@ -40,6 +40,7 @@ export default function Page() {
   };
   const handleSubmit = async () => {
     try {
+      alert("Working");
       const docRef = await addDoc(collection(db, `${data.category}`), {
         name: data.name,
         designation: data.designation,
