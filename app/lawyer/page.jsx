@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState, useEffect } from 'react';
 import { doc, getDoc, getDocs, query, where } from 'firebase/firestore';
 import { db, auth } from '@/Components/firebase';
@@ -150,10 +150,7 @@ const Page = ({ searchParams }) => {
     try {
       const docSnap = await getDoc(docRef);
       if (docSnap.exists()) {
-        set
-
-Lawyer([docSnap.data()]);
-
+        setLawyer([docSnap.data()]);
         setFetchedNum(docSnap.data().ratingNumber);
 
         const user = auth.currentUser;
@@ -188,110 +185,113 @@ Lawyer([docSnap.data()]);
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      {lawyer.map((law) => (
-        <div key={law.docid} className="flex justify-around p-4 rounded bg-white shadow-md my-3 gap-5 w-96">
-          <div className="flex flex-col items-center">
-            <img src={law.imgUrl} alt="" className="rounded-full w-[150px] h-[150px]" />
-            <h2 className="font-bold text-2xl my-3">{law.name}</h2>
-            <div className="p-2">
-              <p className="p-1">{law.description}</p>
-              <p className="p-1">
-                Designation: {law.designation} ({law.category})
-              </p>
-              <p className="p-1">Education: {law.education}</p>
-            </div>
-            <div className="flex justify-center">
-              <p className="p-1">Cased Won: {law.won}</p>
-              <p className="p-1">Cases Handled: {law.handled}</p>
-            </div>
-            <div className="flex justify-center">
-              <p className="p-1">Location: {law.location}</p>
-              <p className="p-1">Availability: {law.availability}</p>
-            </div>
-            <div className="p-2">
-              <p className="p-1">Experience: {law.years}</p>
-            </div>
-            <div className="flex justify-center">
-              <h6 className="text-3xl p-2">
-                <a href={law.linkedin}>
-                  <BsLinkedin />
-                </a>
-              </h6>
-              <h6 className="text-3xl p-2">
-                <a href={`tel:${law.phone}`}>
-                  <PiPhoneCallFill />
-                </a>
-              </h6>
-              <h6 className="text-3xl p-2">
-                <a href={law.instagram}>
-                  <GrInstagram />
-                </a>
-              </h6>
-              <h6 className="text-3xl p-2">
-                <a href={`mailto:${law.email}`}>
-                  <AiOutlineMail />
-                </a>
-              </h6>
-              <h6 className="text-3xl p-2">
-                <a href={`mailto:${law.website}`}>
-                  <TbWorldWww />
-                </a>
-              </h6>
-            </div>
-            <div className="flex justify-center items-center my-3">
-              <div className="p-5">
-                <QRCode value={`upi://pay?pa=${law.upiId}`} />
-              </div>
-              <div>
-                <div className="flex gap-1">
-                  {[1, 2, 3, 4, 5].map((index) => (
-                    <input key={index} type="checkbox" name={`rating-${index}`} onClick={() => rating(index)} />
-                  ))}
-                </div>
-              </div>
-            </div>
+    {lawyer.map((law) => (
+      <div key={law.docid} className="flex p-4 rounded bg-white shadow-md my-3 w-full max-w-2xl">
+        {/* Lawyer Information (Left Column) */}
+        <div className="flex flex-col items-center w-1/2 pr-4">
+          <img src={law.imgUrl} alt="" className="rounded-full w-[150px] h-[150px]" />
+          <h2 className="font-bold text-2xl my-3">{law.name}</h2>
+          <div className="p-2">
+            <p className="p-1">{law.description}</p>
+            <p className="p-1">
+              Designation: {law.designation} ({law.category})
+            </p>
+            <p className="p-1">Education: {law.education}</p>
           </div>
-          <div className="flex flex-col items-center">
-            <input
-              type="text"
-              className="border p-2 rounded"
-              placeholder="Type your message"
-              onChange={(event) => setMessage((prev) => ({ ...prev, body: event.target.value }))}
-              value={message.body}
-            />
-            <button
-              className="bg-blue-500 text-white px-4 py-2 rounded mt-3"
-              onClick={sendMessage}
-            >
-              Send
-            </button>
-            <div className="my-3">
-              <h1 className="text-xl font-bold mb-2">Messages from Firebase Collection</h1>
-              <ul>
-                {fetchedMessages.map((msg) => (
-                  <li key={msg.id}>{msg.body}</li>
-                ))}
-              </ul>
+          <div className="flex justify-center">
+            <p className="p-1">Cased Won: {law.won}</p>
+            <p className="p-1">Cases Handled: {law.handled}</p>
+          </div>
+          <div className="flex justify-center">
+            <p className="p-1">Location: {law.location}</p>
+            <p className="p-1">Availability: {law.availability}</p>
+          </div>
+          <div className="p-2">
+            <p className="p-1">Experience: {law.years}</p>
+          </div>
+          {/* Social Media Links */}
+          <div className="flex justify-center">
+            <h6 className="text-3xl p-2">
+              <a href={law.linkedin}>
+                <BsLinkedin />
+              </a>
+            </h6>
+            <h6 className="text-3xl p-2">
+              <a href={`tel:${law.phone}`}>
+                <PiPhoneCallFill />
+              </a>
+            </h6>
+            <h6 className="text-3xl p-2">
+              <a href={law.instagram}>
+                <GrInstagram />
+              </a>
+            </h6>
+            <h6 className="text-3xl p-2">
+              <a href={`mailto:${law.email}`}>
+                <AiOutlineMail />
+              </a>
+            </h6>
+            <h6 className="text-3xl p-2">
+              <a href={`mailto:${law.website}`}>
+                <TbWorldWww />
+              </a>
+            </h6>
+          </div>
+          {/* QR Code and Rating Section */}
+          <div className="flex justify-center items-center my-3">
+            <div className="p-5">
+              <QRCode value={`upi://pay?pa=${law.upiId}`} />
             </div>
-            <div className="my-3">
-              <h1 className="text-xl font-bold mb-2">Documents with substring:</h1>
-              <div>
-                {documentsWithSubstring.map((doc) => (
-                  <div
-                    key={doc.id}
-                    onClick={() => LawyersChatCollectionName(doc.data.name)}
-                    className="cursor-pointer text-blue-500"
-                  >
-                    {doc.data.name}
-                  </div>
+            <div>
+              <div className="flex gap-1">
+                {[1, 2, 3, 4, 5].map((index) => (
+                  <input key={index} type="checkbox" name={`rating-${index}`} onClick={() => rating(index)} />
                 ))}
               </div>
             </div>
           </div>
         </div>
-      ))}
-    </div>
-  );
+
+        {/* Chat Feature (Right Column) */}
+        <div className="flex flex-col items-center w-1/2 pl-4">
+          <input
+            type="text"
+            className="border p-2 rounded mb-3"
+            placeholder="Type your message"
+            onChange={(event) => setMessage((prev) => ({ ...prev, body: event.target.value }))}
+            value={message.body}
+          />
+          <button className="bg-blue-500 text-white px-4 py-2 rounded mb-3" onClick={sendMessage}>
+            Send
+          </button>
+          <div className="my-3">
+            <h1 className="text-xl font-bold mb-2">Messages from Firebase Collection</h1>
+            <ul>
+              {fetchedMessages.map((msg) => (
+                <li key={msg.id}>{msg.body}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="my-3">
+            <h1 className="text-xl font-bold mb-2">Documents with substring:</h1>
+            <div>
+              {documentsWithSubstring.map((doc) => (
+                <div
+                  key={doc.id}
+                  onClick={() => LawyersChatCollectionName(doc.data.name)}
+                  className="cursor-pointer text-blue-500"
+                >
+                  {doc.data.name}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+);
 };
+
 
 export default Page;
