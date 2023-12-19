@@ -7,7 +7,7 @@ import { collection, addDoc } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 
-export default function page() {
+export default function Page() {
   const [data, setData] = useState({
     name: "",
     designation: "",
@@ -15,15 +15,17 @@ export default function page() {
     category: "",
     advocateID:"",
     location: "",
-    years: "",
+    years: 0,
     handled: "",
     won: "",
     contact: "",
     language: "",
     upiId:"",
     email:"",
-    fees: "",
+    fees: 0,
     education: "",
+    ratingNumber:0,
+    imgUrl:''
   });
   const [img, setImg] = useState("");
   const handleUpload = (e) => {
@@ -39,6 +41,7 @@ export default function page() {
   };
   const handleSubmit = async () => {
     try {
+      alert("Working");
       const docRef = await addDoc(collection(db, `${data.category}`), {
         name: data.name,
         designation: data.designation,
@@ -56,6 +59,7 @@ export default function page() {
         email: data.email,
         upiId: data.upiId,
         imgUrl: img,
+        ratingNumber:0,
       });
       alert("Document written with ID: " + docRef.id);
     } catch (error) {
@@ -68,7 +72,7 @@ export default function page() {
                
         <div className="flex justify-center items-center mt-20 mb-20">
           <div className="card bg-base-100 p-6 w-full max-w-screen-lg md:w-4/5 lg:w-3/4 xl:w-2/3 ">
-            <h2 className="text-2xl font-bold">Lawyer's Registration</h2>
+            <h2 className="text-2xl font-bold">Lawyers Registration</h2>
             <hr className="my-4 border-t-2 border-base-200 p-2 shadow-2xl rounded-2xl" />
             <form className="grid grid-cols-2 gap-6 md:grid-cols-2 ">
                <div> 

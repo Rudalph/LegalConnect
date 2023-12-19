@@ -8,13 +8,13 @@ import { AiOutlineMail } from 'react-icons/ai';
 import { BsLinkedin } from 'react-icons/bs';
 import { TbWorldWww } from 'react-icons/tb';
 import QRCode from "qrcode.react";
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc, updateDoc } from 'firebase/firestore';
 
 
 
 
 
-const page = ({ searchParams }) => {
+const Page = ({ searchParams }) => {
 
 
   const [lawyer, setLawyer] = useState([]);
@@ -160,8 +160,64 @@ const page = ({ searchParams }) => {
    setLawyerWantsToTalkTo(rcn);
  }
    
+  const [num, setNum] = useState(0); 
+  const [fetchedNum, setFetchedNum]=useState(0); 
+  const rating = async (nums) => {
+    const alroy = nums;
+
     
-  
+    const nameOfCollection=String(searchParams.category)
+    const documentId=String(searchParams.docid);
+    const fieldNameToAdd = "ratingNumber";
+    const docRef = doc(db, String(searchParams.category), String(searchParams.docid));
+    try{
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          console.log("Document data:", docSnap.data());
+          setLawyer([docSnap.data()]);
+
+          setFetchedNum(docSnap.data().ratingNumber);
+
+          const user = auth.currentUser;  
+          setClientUserID(user.uid);
+        } else {
+          alert("No such document!");
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        alert("Error");
+      }
+    const valueToAdd=parseInt(alroy)+parseInt(fetchedNum);
+    alert(valueToAdd);
+
+    const addFieldToDocument = async (
+      collectionName,
+      documentId,
+      field,
+      value
+    ) => {
+      try {
+        const docRef = doc(db, collectionName, documentId);
+        await updateDoc(docRef, {
+          [field]: value, // Adding field and value to the document
+        });
+        console.log(
+          `Field '${field}' with value '${value}' added successfully to document '${documentId}' in '${collectionName}' collection`
+        );
+        alert("Verify kara dunga");
+      } catch (error) {
+        console.error("Error adding field and value:", error);
+      }
+    };
+
+    addFieldToDocument(
+      nameOfCollection,
+      documentId,
+      fieldNameToAdd,
+      valueToAdd
+    );
+    
+ }  
 
   
 
@@ -173,7 +229,7 @@ const page = ({ searchParams }) => {
     <div>
         {lawyer.map((law)=>{
           return(
-            <div className='flex justify-around'>
+            <div key={law.name}className='flex justify-around'>
                  <div className='p-4 rounded form text-[#272829] outline outline-1 outline-offset-1 shadow-inner my-3  gap-5 h-fit w-96'>
                         <div className='flex justify-center'>
                            <img src={law.imgUrl} alt="" className="rounded-full w-[150px] h-[150px]" />
@@ -207,6 +263,16 @@ const page = ({ searchParams }) => {
                             <div className='p-5'>
                               <QRCode value={`upi://pay?pa=${law.upiId}`} />
                             </div>
+                            <div>
+                                <input type="checkbox" name="rating-1" onClick={()=>{rating(1)}}/>
+                                <input type="checkbox" name="rating-1" onClick={()=>{rating(2)}}/>                       
+                                <input type="checkbox" name="rating-1" onClick={()=>{rating(3)}}/>                              
+                                <input type="checkbox" name="rating-1" onClick={()=>{rating(4)}}/>
+                                <input type="checkbox" name="rating-1" onClick={()=>{rating(5)}}/>                                
+                            </div>
+                            <div>
+                            
+                            </div>
                           </div>
                         </div>
                 </div>
@@ -235,6 +301,7 @@ const page = ({ searchParams }) => {
                     <div onClick={() => LawyersChatCollectionName(doc.data.name)} key={doc.id}>{doc.data.name}</div>
                   ))}
                 </div>
+                
             </div>
           )
         })}
@@ -244,4 +311,4 @@ const page = ({ searchParams }) => {
       }
 
 
-export default page;
+export default Page;

@@ -22,10 +22,11 @@ export default function LawyersComponent() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const collectionNames = ['Civil', 'Criminal', 'Corporate', 'Family', 'Labor', 'Tax', 'Injury', 'Public', 'Estate', 'Medical'];
+        const collectionNames = ['civil', 'criminal', 'corporate', 'family', 'labor', 'tax', 'injury', 'public', 'estate', 'medical'];
         const promises = collectionNames.map(async (collectionName) => {
           const querySnapshot = await getDocs(collection(db, collectionName));
           return querySnapshot.docs.map((doc) => ({
+            key:doc.id,
             id: doc.id,
             ...doc.data(),
           }));
@@ -105,7 +106,7 @@ export default function LawyersComponent() {
         .filter((lawyer) => lawyer.verificationStatus != "verified")
         .map((lawyer) => {
           return (
-            <div>
+            <div key={lawyer.id}>
               <div className="p-10 flex items-center justify-center">
                 <div className="card lg:card-side bg-base-100 border border-accent w-[70%]">
                   <figure>
