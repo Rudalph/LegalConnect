@@ -172,7 +172,7 @@ const Page = () => {
                   <button className=" bg-base-100 border-primary btn w-full hover:bg-primary hover:text-white" onClick={signUp}>
                     Register
                   </button>
-                  <button onClick={onClickGSI}>Google</button>
+                  <button onClick={onClickGSI}><FcGoogle/></button>
                 </Link>
               </div>
                
