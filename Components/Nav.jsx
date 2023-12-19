@@ -71,22 +71,17 @@ export default function Nav() {
         </div>
         <div className="flex-none ">
           <ul className="px-1 py-0 flex items-center  justify-center space-x-7">
-            <li className="hover:bg-white text-sm font-semibold text-gray-400 cursor-pointer hover:text-[#344B66]">
+            <li className=" text-sm font-semibold text-white cursor-pointer hover:text-[#E9BA0B]">
               <Link href="/">Home</Link>
             </li>
-            <li className="hover:bg-white text-sm font-semibold text-gray-400 cursor-pointer hover:text-[#344B66]">
+            <li className="text-sm font-semibold text-white cursor-pointer hover:text-[#E9BA0B] ">
               <Link href="/Lawer_Register">Lawyer Registration</Link>
             </li>
-            <Dropdown className="bg-white hover:bg-white" />
-
-            <li className={` ${isLoggedIn ? "" : "hidden"} `}>
+            <Dropdown className="bg-white hover:bg-white text-white"/>
+            
+            <li className={` ${isLoggedIn?"":"hidden"} `}>
               {isLoggedIn ? (
-                <button
-                  className="font-semibold text-sm text-gray-400 hover:text-black"
-                  onClick={displayDetails}
-                >
-                  User Details
-                </button>
+                <button className="font-semibold text-sm bg-white text-white hover:text-black" onClick={displayDetails}>User Details</button>
               ) : (
                 <></>
               )}
@@ -95,7 +90,7 @@ export default function Nav() {
             {/* <li className="btn btn-ghost hover:bg-primary hover:text-white border border-primary">
               <Link href="/Signup">Register</Link>
             </li> */}
-            <li className="">
+            <li className="bg-white rounded-lg px-4 py-1 font-semibold text-sm">
               <Link href="/Login">Login</Link>
             </li>
             <li>

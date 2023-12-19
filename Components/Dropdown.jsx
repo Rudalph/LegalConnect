@@ -9,7 +9,7 @@ export default function Dropdown() {
     <div className="group">
       <li className="pr-7">
         <div className="dropdown dropdown-bottom group-hover mx-auto">
-          <div tabIndex={0} role="button" className="flex flex-row text-sm font-semibold text-gray-400 hover:text-[#344B66]">
+          <div tabIndex={0} role="button" className="flex flex-row text-sm text-white font-semibold  hover:text-[#E9BA0B]">
             <div className="mr-1">
               Find Experts
             </div>

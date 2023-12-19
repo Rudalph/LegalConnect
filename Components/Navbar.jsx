@@ -144,10 +144,10 @@ const Navbar = () => {
                   </>
                 
                 ):(<></>)}
-                <div className='p-5'><button className='text-3xl text-[#FFF6E0]' onClick={()=>setShowModal(true)}><FaUserTie/></button></div>
-                <div className='p-5'><button href={"/"} className='text-3xl text-[#FFF6E0]' onClick={()=>setShowModal1(true)}><TfiViewListAlt /></button></div>
-                <div className='p-5'><button href={"/"} className='text-3xl text-[#FFF6E0]'><Link href={"/Login"}><RiLoginCircleFill /></Link></button></div>
-                <div className='p-5'><button href={"/"} className='text-3xl text-[#FFF6E0]' onClick={logOut}><BiLogOut /></button></div>
+                <div className='p-5'><button className='text-3xl text-white' onClick={()=>setShowModal(true)}><FaUserTie/></button></div>
+                <div className='p-5'><button href={"/"} className='text-3xl text-white' onClick={()=>setShowModal1(true)}><TfiViewListAlt /></button></div>
+                <div className='p-5'><button href={"/"} className='text-3xl text-white'><Link href={"/Login"}><RiLoginCircleFill /></Link></button></div>
+                <div className='p-5'><button href={"/"} className='text-3xl text-white' onClick={logOut}><BiLogOut /></button></div>
            </div>
         </nav> 
         
