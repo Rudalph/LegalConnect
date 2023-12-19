@@ -24,7 +24,8 @@ export default function Page() {
     email:"",
     fees: 0,
     education: "",
-    ratingNumber:0
+    ratingNumber:0,
+    imgUrl:''
   });
   const [img, setImg] = useState("");
   const handleUpload = (e) => {
