@@ -15,15 +15,16 @@ export default function page() {
     category: "",
     advocateID:"",
     location: "",
-    years: "",
+    years: 0,
     handled: "",
     won: "",
     contact: "",
     language: "",
     upiId:"",
     email:"",
-    fees: "",
+    fees: 0,
     education: "",
+    ratingNumber:0
   });
   const [img, setImg] = useState("");
   const handleUpload = (e) => {
@@ -56,6 +57,7 @@ export default function page() {
         email: data.email,
         upiId: data.upiId,
         imgUrl: img,
+        ratingNumber:0,
       });
       alert("Document written with ID: " + docRef.id);
     } catch (error) {
