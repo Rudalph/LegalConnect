@@ -135,7 +135,7 @@ const Navbar = () => {
     <div>
         <nav className='bg-[#272829] text-white h-20 p-5 flex justify-between'>
             <div>
-                <Link href={"/"}><p className='logo-text text-4xl text-[#FFF6E0]'>Legal Connect</p></Link>
+                <Link href={"/"}><p className=' text-4xl text-white'>Legal Connect</p></Link>
             </div>
            <div className="grid grid-flow-col justify-stretch font-semibold">
                 {isLoggedIn?(
@@ -144,10 +144,10 @@ const Navbar = () => {
                   </>
                 
                 ):(<></>)}
-                <div className='p-5'><button className='text-3xl text-[#FFF6E0]' onClick={()=>setShowModal(true)}><FaUserTie/></button></div>
-                <div className='p-5'><button href={"/"} className='text-3xl text-[#FFF6E0]' onClick={()=>setShowModal1(true)}><TfiViewListAlt /></button></div>
-                <div className='p-5'><button href={"/"} className='text-3xl text-[#FFF6E0]'><Link href={"/Login"}><RiLoginCircleFill /></Link></button></div>
-                <div className='p-5'><button href={"/"} className='text-3xl text-[#FFF6E0]' onClick={logOut}><BiLogOut /></button></div>
+                <div className='p-5'><button className='text-3xl text-white' onClick={()=>setShowModal(true)}><FaUserTie/></button></div>
+                <div className='p-5'><button href={"/"} className='text-3xl text-white' onClick={()=>setShowModal1(true)}><TfiViewListAlt /></button></div>
+                <div className='p-5'><button href={"/"} className='text-3xl text-white'><Link href={"/Login"}><RiLoginCircleFill /></Link></button></div>
+                <div className='p-5'><button href={"/"} className='text-3xl text-white' onClick={logOut}><BiLogOut /></button></div>
            </div>
         </nav> 
         

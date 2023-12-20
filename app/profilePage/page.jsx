@@ -131,7 +131,7 @@ export default function Page({ searchParams }) {
                     }}
                   >
                     <div className="card-actions justify-end">
-                      <button className="btn btn-primary">Know more!</button>
+                      <button className="btn bg-[#017E7E] text-white hover:text-black">Know more!</button>
                     </div>
                   </Link>
                 </div>

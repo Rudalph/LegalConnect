@@ -20,7 +20,7 @@ const Page = () => {
    }
    else if(loginValues.email==='admin' || loginValues.password==='admin')
    {
-    alert("ADMIN SIGNUP WORKING");
+    // alert("ADMIN SIGNUP WORKING");
     window.location.href='/Admin';
    }
    else
@@ -31,13 +31,13 @@ const Page = () => {
         // Signed in
         const user = userCredential.user;
         console.log(user.uid);
-        alert("Logged in");
+        // alert("Logged in");
     
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        alert("Errors", errorMessage, errorCode);
+        // alert("Errors", errorMessage, errorCode);
       });
    }
   }
@@ -93,7 +93,7 @@ const Page = () => {
 
               <div className="mt-6 form-control">
                 <Link href={'/'}>
-                  <button className="bg-base-100 border-primary btn w-full hover:bg-primary hover:text-white" onClick={handleLogin}>
+                  <button className="bg-base-100 border-[#017E7E] btn w-full hover:bg-[#017E7E] hover:text-white" onClick={handleLogin}>
                     Login
                   </button>
                 </Link>
@@ -101,7 +101,7 @@ const Page = () => {
               <div className="mt-4 text-center">
                 <p className="text-base">
                   Dont have an account?{' '}
-                  <Link href={'/Signup'} className="text-primary font-bold">
+                  <Link href={'/Signup'} className="text-[#017E7E] font-bold">
                     Sign Up
                   </Link>
                 </p>
