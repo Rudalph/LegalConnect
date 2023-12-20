@@ -72,6 +72,12 @@ export default function Nav() {
             <li className="text-sm font-semibold text-white cursor-pointer hover:text-[#E9BA0B] ">
               <Link href="/Lawer_Register">Lawyer Registration</Link>
             </li>
+            <li className="text-sm font-semibold text-white cursor-pointer hover:text-[#E9BA0B] ">
+              <Link href="/StudentRegi">Law Student Registration</Link>
+            </li>
+            <li className="text-sm font-semibold text-white cursor-pointer hover:text-[#E9BA0B] ">
+              <Link href="/StuDisplay">Find Student Assistance</Link>
+            </li>
             <Dropdown className="bg-white hover:bg-white text-white"/>
             
             <li className={` ${isLoggedIn?"":"hidden"} `}>
