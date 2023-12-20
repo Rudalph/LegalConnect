@@ -177,7 +177,7 @@ const Page = () => {
                
             </form>
             <input type="checkbox" />
-            I accecpt all terms and conditions and acknowledge that information is filled 
+            I accecpt all terms & conditions and acknowledge that information is filled 
             with my knowledge.
           </div>
         </div>
