@@ -171,11 +171,14 @@ const Page = () => {
                   <button className=" bg-base-100 border-[#017E7E] btn w-full hover:bg-[#017E7E] hover:text-white" onClick={signUp}>
                     Register
                   </button>
-                  <button className="p-4" onClick={onClickGSI}><FcGoogle/></button>
+                  <button className="ml-36 text-2xl p-2" onClick={onClickGSI}><FcGoogle/></button>
                 </Link>
               </div>
                
             </form>
+            <input type="checkbox" />
+            I accecpt all terms and conditions and acknowledge that information is filled 
+            with my knowledge.
           </div>
         </div>
       </div>
