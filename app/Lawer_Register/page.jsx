@@ -25,6 +25,7 @@ export default function Page() {
     education: "",
     ratingNumber: 0,
     imgUrl: "",
+    userID:'',
   });
   const [img, setImg] = useState("");
   const handleUpload = (e) => {
