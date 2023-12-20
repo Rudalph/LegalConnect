@@ -90,14 +90,16 @@ export default function Service() {
     <div className="">
       {/* Our Services */}
       <div className="grid gap-1 mt-8 py-16">
-        <div className="flex justify-center my-1">
-          <p className="text-sm font-semibold text-[#2BB4FD]">EXPLORE</p>
+      <div className="flex justify-center my-1">
+          <p className="text-sm font-semibold text-[#04C4C4]">EXPLORE</p>
         </div>
-        <h1 className="text-4xl mb-2 font-bold text-[#344B66] tracking-tight text-center">
+        <h1 className="text-4xl mb-2 font-bold text-[#007C7C] tracking-tight text-center">
           Our Services
         </h1>
         <div className="flex justify-center">
-          <p className="text-sm text-gray-400">Get Reliable Tools for Legal Documentation tasks</p>
+          <p className="text-sm text-gray-400">
+            Get Reliable Tools for Legal Documentation tasks
+          </p>
         </div>
         <div className="flex flex-col justify-center items-center">
           <div className="grid mx-auto grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4  py-12">
