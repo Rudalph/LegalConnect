@@ -321,7 +321,7 @@ export default function Page() {
             <div className="mt-7 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-2 py-2">
               <div className="text-center">
                 <div className="flex text-xs leading-6 text-gray-600">
-                  <label className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
+                  <label className="relative cursor-pointer rounded-md bg-white font-semibold text-[#017E7E] focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
                     <span>Upload a file</span>
                     <input
                       type="file"
@@ -340,7 +340,7 @@ export default function Page() {
 
           <div className="col-span-2 mt-6 form-control w-full flex justify-center items-center">
             <button
-              className="bg-base-100 border-primary btn w-full hover:bg-primary hover:text-white"
+              className="w-full btn bg-[#017E7E] text-white hover:text-black "
               onClick={handleSubmit}
             >
               Submit

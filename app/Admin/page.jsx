@@ -182,7 +182,7 @@ export default function LawyersComponent() {
                       
                       <div className="flex space-x-4">
                         <button
-                          className="btn btn-primary  "
+                          className="btn bg-[#017E7E] text-white hover:text-black "
                           onClick={() => {
                             accecptLawyer(lawyer.category, lawyer.id);
                           }}
@@ -190,7 +190,7 @@ export default function LawyersComponent() {
                           Accept
                         </button>
                         <button
-                          className="btn btn-primary"
+                          className="btn bg-[#017E7E] text-white hover:text-black "
                           onClick={() => {
                             deleteLawyer(lawyer.category, lawyer.id);
                           }}

@@ -168,10 +168,10 @@ const Page = () => {
 
               <div className="mt-6 form-control">
                 <Link href={'/Login'}>
-                  <button className=" bg-base-100 border-primary btn w-full hover:bg-primary hover:text-white" onClick={signUp}>
+                  <button className=" bg-base-100 border-[#017E7E] btn w-full hover:bg-[#017E7E] hover:text-white" onClick={signUp}>
                     Register
                   </button>
-                  <button onClick={onClickGSI}><FcGoogle/></button>
+                  <button className="p-4" onClick={onClickGSI}><FcGoogle/></button>
                 </Link>
               </div>
                

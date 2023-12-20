@@ -93,7 +93,7 @@ const Page = () => {
 
               <div className="mt-6 form-control">
                 <Link href={'/'}>
-                  <button className="bg-base-100 border-primary btn w-full hover:bg-primary hover:text-white" onClick={handleLogin}>
+                  <button className="bg-base-100 border-[#017E7E] btn w-full hover:bg-[#017E7E] hover:text-white" onClick={handleLogin}>
                     Login
                   </button>
                 </Link>
@@ -101,7 +101,7 @@ const Page = () => {
               <div className="mt-4 text-center">
                 <p className="text-base">
                   Dont have an account?{' '}
-                  <Link href={'/Signup'} className="text-primary font-bold">
+                  <Link href={'/Signup'} className="text-[#017E7E] font-bold">
                     Sign Up
                   </Link>
                 </p>

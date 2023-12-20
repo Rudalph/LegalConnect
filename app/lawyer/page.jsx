@@ -261,7 +261,7 @@ const Page = ({ searchParams }) => {
             onChange={(event) => setMessage((prev) => ({ ...prev, body: event.target.value }))}
             value={message.body}
           />
-          <button className="bg-blue-500 text-white px-4 py-2 rounded mb-3" onClick={sendMessage}>
+          <button className="bg-[#017E7E] text-white px-4 py-2 rounded mb-3" onClick={sendMessage}>
             Send
           </button>
           <div className="my-3">
@@ -279,7 +279,7 @@ const Page = ({ searchParams }) => {
                 <div
                   key={doc.id}
                   onClick={() => LawyersChatCollectionName(doc.data.name)}
-                  className="cursor-pointer text-blue-500"
+                  className="cursor-pointer text-[#017E7E]"
                 >
                   {doc.data.name}
                 </div>
