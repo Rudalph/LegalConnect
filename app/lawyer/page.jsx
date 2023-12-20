@@ -263,6 +263,9 @@ const Page = ({ searchParams }) => {
                             <div className='p-5'>
                               <QRCode value={`upi://pay?pa=${law.upiId}`} />
                             </div>
+                            <div className='my-2 mx-3'>
+                              <a href="https://rzrpay.vercel.app/payment">RazorPay</a>
+                            </div>
                             <div>
                                 <input type="checkbox" name="rating-1" onClick={()=>{rating(1)}}/>
                                 <input type="checkbox" name="rating-1" onClick={()=>{rating(2)}}/>                       
