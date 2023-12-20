@@ -6,7 +6,10 @@ import { app, db } from "@/Components/firebase";
 import { collection, addDoc } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
+
+
 export default function Page() {
+  
   const [data, setData] = useState({
     name: "",
     designation: "",
@@ -66,6 +69,45 @@ export default function Page() {
     } catch (error) {
       alert("Error adding document: " + error);
     }
+
+
+
+
+
+    async function updateFirestoreData(userId, newData) {
+      try {
+        const response = await fetch('/api/firestoreAPI', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ userId, newData }),
+        });
+    
+        if (response.ok) {
+          const result = await response.json();
+          console.log('Firestore data updated:', result.message);
+        } else {
+          console.error('Failed to update Firestore data');
+        }
+      } catch (error) {
+        console.error('Error updating Firestore data:', error);
+      }
+    }
+    
+    // Example usage
+    const userId = '123';
+    const newData = {
+      username: 'john_doe',
+      email: 'john@example.com',
+      // Other fields as needed
+    };
+    
+    // Call the function to update data in Firestore
+    updateFirestoreData(userId, newData);
+
+
+
   };
 
   return (
