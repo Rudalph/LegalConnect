@@ -20,7 +20,7 @@ const Page = () => {
    }
    else if(loginValues.email==='admin' || loginValues.password==='admin')
    {
-    alert("ADMIN SIGNUP WORKING");
+    // alert("ADMIN SIGNUP WORKING");
     window.location.href='/Admin';
    }
    else
@@ -31,13 +31,13 @@ const Page = () => {
         // Signed in
         const user = userCredential.user;
         console.log(user.uid);
-        alert("Logged in");
+        // alert("Logged in");
     
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        alert("Errors", errorMessage, errorCode);
+        // alert("Errors", errorMessage, errorCode);
       });
    }
   }

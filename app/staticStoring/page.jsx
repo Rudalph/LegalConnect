@@ -1,6 +1,6 @@
 // pages/api/firestoreAPI.js
 
-import { db } from '../../path-to-your-firebase-config'; // Import your Firebase configuration
+import { db } from '../../Components/firebase'; // Import your Firebase configuration
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {

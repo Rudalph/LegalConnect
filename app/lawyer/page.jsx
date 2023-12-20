@@ -33,11 +33,11 @@ const Page = ({ searchParams }) => {
           const user = auth.currentUser;
           setClientUserID(user.uid);
         } else {
-          alert('No such document!');
+          // alert('No such document!');
         }
       } catch (error) {
         console.error('Error fetching data:', error);
-        alert('Error');
+        // alert('Error');
       }
     };
 
@@ -49,19 +49,19 @@ const Page = ({ searchParams }) => {
   const sendMessage = async () => {
     if (lawyerUserID === clientUserID) {
       if (lawyerWantsToTalkTo === '') {
-        alert('Please select the chat to start the conversation');
+        // alert('Please select the chat to start the conversation');
       } else {
         chatCollectionName = lawyerWantsToTalkTo;
-        alert(chatCollectionName);
-        alert(message.body);
+        // alert(chatCollectionName);
+        // alert(message.body);
         fetchChatLawyersMessages();
         try {
           const docRef = await addDoc(collection(db, `${chatCollectionName}`), {
             body: message.body,
           });
-          alert('Document written with ID: ' + docRef.id);
+          // alert('Document written with ID: ' + docRef.id);
         } catch (error) {
-          alert('Error adding document: ' + error);
+          // alert('Error adding document: ' + error);
         }
       }
 
@@ -78,16 +78,16 @@ const Page = ({ searchParams }) => {
       }
     } else {
       chatCollectionName = lawyerUserID + clientUserID;
-      alert(chatCollectionName);
-      alert(message.body);
+      // alert(chatCollectionName);
+      // alert(message.body);
       fetchChatMessages();
       try {
         const docRef = await addDoc(collection(db, `${chatCollectionName}`), {
           body: message.body,
         });
-        alert('Document written with ID: ' + docRef.id);
+        // alert('Document written with ID: ' + docRef.id);
       } catch (error) {
-        alert('Error adding document: ' + error);
+        // alert('Error adding document: ' + error);
       }
 
       const allChatCollectionRef = collection(db, 'allChatCollections');
@@ -98,12 +98,12 @@ const Page = ({ searchParams }) => {
           const docRef1 = await addDoc(collection(db, 'allChatCollections'), {
             name: chatCollectionName,
           });
-          alert('Document written with ID: ' + docRef1.id);
+          // alert('Document written with ID: ' + docRef1.id);
         } catch (error) {
-          alert('Error adding document: ' + error);
+          // alert('Error adding document: ' + error);
         }
       } else {
-        alert('Document already exists in the collection');
+        // alert('Document already exists in the collection');
       }
     }
   };
@@ -113,10 +113,10 @@ const Page = ({ searchParams }) => {
       const querySnapshot = await getDocs(collection(db, chatCollectionName));
       const data = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
       setFetchedMessages(data);
-      alert('Fetching working well');
+      // alert('Fetching working well');
     } catch (error) {
       console.error('Error fetching data:', error);
-      alert('Fetching Failed');
+      // alert('Fetching Failed');
     }
   };
 
@@ -125,10 +125,10 @@ const Page = ({ searchParams }) => {
       const querySnapshot = await getDocs(collection(db, chatCollectionName));
       const data = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
       setFetchedMessages(data);
-      alert('Fetching working well');
+      // alert('Fetching working well');
     } catch (error) {
       console.error('Error fetching data:', error);
-      alert('Fetching Failed');
+      // alert('Fetching Failed');
     }
   };
 
@@ -156,7 +156,7 @@ const Page = ({ searchParams }) => {
         const user = auth.currentUser;
         setClientUserID(user.uid);
       } else {
-        alert('No such document!');
+        // alert('No such document!');
       }
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -174,7 +174,7 @@ const Page = ({ searchParams }) => {
         console.log(
           `Field '${field}' with value '${value}' added successfully to document '${documentId}' in '${collectionName}' collection`
         );
-        alert('Verify kara dunga');
+        // alert('Verify kara dunga');
       } catch (error) {
         console.error('Error adding field and value:', error);
       }

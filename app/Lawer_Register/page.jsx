@@ -44,7 +44,7 @@ export default function Page() {
   };
   const handleSubmit = async () => {
     try {
-      alert("Working");
+      // alert("Working");
       const docRef = await addDoc(collection(db, `${data.category}`), {
         name: data.name,
         designation: data.designation,
@@ -65,18 +65,18 @@ export default function Page() {
         ratingNumber: 0,
         userID: data.userID,
       });
-      alert("Document written with ID: " + docRef.id);
+      // alert("Document written with ID: " + docRef.id);
     } catch (error) {
-      alert("Error adding document: " + error);
+      // alert("Error adding document: " + error);
     }
 
 
 
 
 
-    async function updateFirestoreData(userId, newData) {
+    async function updateFirestoreData(userID, newData) {
       try {
-        const response = await fetch('/api/firestoreAPI', {
+        const response = await fetch('', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

@@ -45,9 +45,9 @@ export default function LawyersComponent() {
   }, []);
 
   const accecptLawyer = (collectionName, documentId) => {
-    alert("Accecpt Lawyer");
-    alert(documentId);
-    alert(collectionName);
+    // alert("Accecpt Lawyer");
+    // alert(documentId);
+    // alert(collectionName);
     const fieldNameToAdd = "verificationStatus";
     const fieldValueToAdd = "verified";
 
@@ -65,7 +65,7 @@ export default function LawyersComponent() {
         console.log(
           `Field '${field}' with value '${value}' added successfully to document '${documentId}' in '${collectionName}' collection`
         );
-        alert("Verify kara dunga");
+        // alert("Verify kara dunga");
       } catch (error) {
         console.error("Error adding field and value:", error);
       }
@@ -80,9 +80,9 @@ export default function LawyersComponent() {
   };
 
   const deleteLawyer = (collectionName, documentId) => {
-    alert("Delete Lawyer");
-    alert(documentId);
-    alert(collectionName);
+    // alert("Delete Lawyer");
+    // alert(documentId);
+    // alert(collectionName);
 
     const deleteDocument = async (collectionName, documentId) => {
       try {
@@ -91,7 +91,7 @@ export default function LawyersComponent() {
         console.log(
           `Document with ID ${documentId} deleted successfully from ${collectionName}`
         );
-        alert("Backchodi Mat Kar Lawde tere puda document uda dunga");
+        // alert("Backchodi Mat Kar Lawde tere puda document uda dunga");
       } catch (error) {
         console.error("Error deleting document:", error);
       }
