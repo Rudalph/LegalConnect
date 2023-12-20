@@ -4,9 +4,9 @@ import Logo from "@/public/images/Ministry_of_Law_and_Justice.png";
 
 export default function Header() {
   return (
-    <footer className="footer py-1 px-4 bg-[#045D5D] text-base-content ">
+    <div className="flex flex-row justify-between py-1 px-4 bg-[#045D5D] text-base-content ">
       <a
-        className="footer-left  p-2 rounded-lg flex flex-row"
+        className="px-2 rounded-lg flex flex-row justify-center items-center"
         target="_blank"
         href="https://www.india.gov.in/"
         title="भारत सरकार"
@@ -15,7 +15,7 @@ export default function Header() {
         <div className="ministry-logo border border-y-0 border-l-0 border-r-1">
           <img className="w-28 pr-4" src='https://i.ibb.co/Qjpt0vL/1.png' alt="Ministry of Law and Justice"/>
         </div>
-        <div className="flex items-center text-white justify-center pt-2">
+        <div className="flex items-center text-white justify-center pt-2 px-2">
           भारत सरकार | Government of India
         </div>
       </a>
@@ -30,6 +30,6 @@ export default function Header() {
           <a>A+</a>
         </li>
       </ul>
-    </footer>
+    </div>
   );
 }

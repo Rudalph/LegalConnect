@@ -57,20 +57,15 @@ export default function Nav() {
       <div className="navbar bg-[#017E7E] ">
         <div className="flex flex-1 flex-row">
           <a className="flex flex-row" href="https://lawmin.gov.in/">
-            <Image
-              src={Logo}
-              alt="Logo"
-              className="w-8 mr-1"
-              width={175}
-              height={200}
+            <img className="w-8 mx-1" src="https://i.ibb.co/9VPG7LN/Legal-connect-2.png" alt="LegalConnect Logo"
             />
             <div className="text-xl flex items-center font-bold text-white">
-              Legal Connect
+              Legal Connect <span className="text-xs px-1 pb-2 text-gray-300">Pro</span>
             </div>
           </a>
         </div>
         <div className="flex-none ">
-          <ul className="px-1 py-0 flex items-center  justify-center space-x-7">
+          <ul className="px-1 py-0 flex items-center  justify-center space-x-6">
             <li className=" text-sm font-semibold text-white cursor-pointer hover:text-[#E9BA0B]">
               <Link href="/">Home</Link>
             </li>
@@ -81,7 +76,7 @@ export default function Nav() {
             
             <li className={` ${isLoggedIn?"":"hidden"} `}>
               {isLoggedIn ? (
-                <button className="font-semibold text-sm bg-white text-white hover:text-black" onClick={displayDetails}>User Details</button>
+                <button className="font-semibold text-sm bg-white text-white hover:text-[#E9BA0B]" onClick={displayDetails}>User Details</button>
               ) : (
                 <></>
               )}
@@ -90,12 +85,12 @@ export default function Nav() {
             {/* <li className="btn btn-ghost hover:bg-primary hover:text-white border border-primary">
               <Link href="/Signup">Register</Link>
             </li> */}
-            <li className="bg-white rounded-lg px-4 py-1 font-semibold text-sm">
+            <li className="bg-white rounded-lg px-4 py-2 font-semibold text-sm">
               <Link href="/Login">Login</Link>
             </li>
             <li>
               <button
-                className="btn btn-sm bg-accent text-white hover:text-black"
+                className="text-sm rounded-lg px-4 py-2 bg-[#04C4C4] text-white hover:text-black"
                 onClick={logOut}
               >
                 Logout
